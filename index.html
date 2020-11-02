@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>digifab01</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -396,15 +396,30 @@
 <li><a href="#introduction-to-documentation">Introduction to documentation</a>
 <ul>
 <li><a href="#documentation-using-markdown">Documentation using Markdown</a></li>
+<li><a href="#project-documentation-using-git">Project documentation using Git</a></li>
 </ul></li>
 </ul>
 </nav>
 <h1 id="introduction-to-documentation">Introduction to documentation</h1>
 <h2 id="documentation-using-markdown">Documentation using Markdown</h2>
 <blockquote>
-<p>This manual was set by a Graphic Systems phototypesetter driven by the troff formatting program operating under the UNIX system. The text of the manual was prepared using the ed text editor. - Thompson, K. and Ritche, D.M. (1973) Unix Programmer’s Manual. 4th edn. Bell Telephone Laboratories, Inc.</p>
+<p>This manual was set by a Graphic Systems phototypesetter driven by the troff formatting program operating under the UNIX system. The text of the manual was prepared using the ed text editor.</p>
 </blockquote>
-<p>There are countless ways of writing good documentation. From good ol’ pen and paperto sophisticated digital formats like PDF LaTeX or HTML. We’re gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily be processed to suit various needs.</p>
+<ul>
+<li>Thompson, K. and Ritche, D.M. (1973) Unix Programmer’s Manual. 4th edn. Bell Telephone Laboratories, Inc.</li>
+</ul>
+<p>There are countless ways of writing good documentation. From good ol’ pen and paperto sophisticated digital formats like PDF LaTeX or HTML. We’re gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily suited towards various needs using simple automation.</p>
 <p>For presentation within fundamentals of digital fabrication this documentation’s Markdown source will be converted into HTML using GNU Make, the Pandoc parser and a CSS stylesheet for typesetting.</p>
+<h2 id="project-documentation-using-git">Project documentation using Git</h2>
+<blockquote>
+<p>I’m an egotistical bastard, and I name all my projects after myself. First Linux, now git.</p>
+</blockquote>
+<ul>
+<li>Linus Torvalds</li>
+</ul>
+<p>All projects documented below have been progressively extended throughout the module using the Git version control system. Since people attending this class will most likely work using Windows, it is generally advised to clone the documentation repository using an SSH handle, since as of the writing of this document (November 2020) Git for Windows is reported to have security issues around HTTP connections.</p>
+<pre><code>git clone git@repository:user/repository</code></pre>
+<p>In order to use Git over SSH you will need to generate an public-private key pair for every machine you intend on using and register the public key in your Git repository.</p>
+<pre><code>ssh-keygen -t rsa -C email@address</code></pre>
 </body>
 </html>
