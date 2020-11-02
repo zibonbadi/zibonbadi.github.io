@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+
+  :root{
+  		/*	Main	*/
+  		--color-main-bg: white;
+  		--color-main-text: black;
+  		--color-main-bg-screen: #222;
+  		--color-main-text-screen: #ccc;
+  		--color-main-bg-print: white;
+  		--color-main-text-print: black;
+  		
+  		--font-main-sans: 'Liberation Sans', Liberation Sans, sans-serif;
+  		--font-main-serif: 'Liberation Serif', Liberation Serif, serif;
+  		--font-main-mono: 'Liberation Mono', Liberation Mono, monospace;
+  		/*	Heading	*/
+  		--color-heading-bg1:	#1f1f7f;
+  		--color-heading-text: #5858ff;
+  		--font-heading-serif: 'Liberation Serif', Liberation Serif, serif;
+  		--font-heading-sans: 'Liberation Sans', Liberation Sans sans-serif;
+  		--font-heading-mono: 'Liberation Mono', Liberation Mono, monospace;
+  				
+  		/*	Heading	(Dark mode)*/
+  		--color-heading-bg1-screen:	#33337f;
+  		--color-heading-text-screen: #7f7fff;
+  				
+  		/*	Links	*/
+  		--color-link-text:	#8888ff;
+  		
+  		/*	Code	*/
+  		--color-code-bg:	#00007f7f;
+  		
+  		/*	Solarized	*/
+  		--base03:	#002b36;
+  		--base02:	#073642;
+  		--base01:	#586e75;
+  		--base00:	#657b83;
+  		--base3:	#fdf6e3;
+  		--base2:	#eee8d5;
+  		--base1:	#93a1a1;
+  		--base0:	#839496;
+  		
+  		--yellow-solarized:    #b58900;
+  		--orange-solarized:    #cb4b16;
+  		--red-solarized:       #dc322f;
+  		--magenta-solarized:   #d33682;
+  		--violet-solarized:    #6c71c4;
+  		--blue-solarized:      #268bd2;
+  		--cyan-solarized:      #2aa198;
+  		--green-solarized:     #859900;
+
+  		/**	Table.text	*/
+  		--color-table-text: #000;
+  		--color-table-head: #334;
+  		--color-table-head-text: #FFF;
+  		/*	Table.Decoration	*/
+  		--color-table-border: #99F;
+  		--color-table-bg1: #FFF;
+  		--color-table-bg2: #CCF;
+  }
+  	
+  /* Global rules */
+
+  nav li{
+  	list-style-type: none;
+  	display: block;
+  	margin-right: 2em;
+  	border-bottom: 2px dotted;
+  }
+  nav li::before, figcaption::before, table caption::before{ 
+  	display: inline;
+  	align: right;
+   }
+  nav li::before{ 
+  	content: counters(section, ".") " ";
+  	counter-increment: section;
+   }
+  figcaption::before{ 
+  	counter-increment: figcount;
+  	content: "Abbildung "counter(figcount) ": ";
+  	font-weight: bold;
+   }
+  table caption::before{ 
+  	counter-increment: tabcount;
+  	content: "Tabelle "counter(tabcount) ": ";
+  	font-weight: bold;
+   }
+  nav ul li a::after {
+      float: right;
+      right: 0px;
+      position: relative;
+  }
+  nav ul{ counter-reset: section }
+  tr:nth-child(even), tr.even{
+  	background: var(--base3);
+  	color: var(--base00)
+  }
+  tr:nth-child(odd), tr.odd{
+  	background: var(--base2);
+  	color: var(--base00)
+  }
+  td{
+  	text-align: justify
+  }
+  td:last-child, th:last-child{
+  	text-align: right
+  }
+  td:first-child{
+  	text-align: left
+  }
+  thead , th, tr.header {
+  	color: var(--blue-solarized);
+  	background-color: var(--base03);
+  	border-bottom: 0.13em solid;
+  }
+  table,th,td{
+  	font-size: 0.9em;
+  }
+
+  table{
+  	margin-left:	auto;
+  	margin-right:	auto;
+  	width:	95%;
+  	border: 0.2em solid var(--base0);
+  	border-collapse: collapse;
+  	caption-side: bottom;
+  }
+  table caption{ text-align: left; }
+
+  th,td{
+  	border: none;
+  	border-left: 1px solid var(--base0);
+  }
+
+  body{
+  	counter-reset: figcount tabcount;
+  	font-family: var(--font-main-sans);
+  	text-align: justify;
+  	line-height: 1.5;
+  	padding: 1.5rem;
+  	counter-reset: l1, l2, l3
+  }
+  p{	
+  	text-align:	justify;
+  	overflow:	hidden;
+  }
+  blockquote{	
+  	margin-left:	1cm;
+  	margin-right:	1cm;
+  }
+  blockquote p::before, q::before{	content: open-quote;}
+  blockquote p::after, q::after{	content: close-quote;}
+
+  h1{
+  	font-size: 16pt;
+  	font-family: var(--font-heading-sans);
+  	text-decoration: underline;
+  	color: var(--color-main-text);
+  	text-align: center;
+  }
+  h2,h3{
+  	font-size: 14pt;
+  	font-family: var(--font-heading-serif);
+  	color: var(--color-heading-text);
+  }
+  h1,h2,h3{	margin-top:	1.5em;	}
+  h1,h2,h3,blockquote,figcaption,footnote,.footnotes,ul,li,address,a,tr,th,td{
+  	line-height: 1;
+  }
+  h4{	text-decoration:	underline;	}
+
+  pre{
+  	border: 1px solid var(--base00);
+  	padding:	2pt;
+  	background-color: var(--base2);
+  	background-opacity:	50%;
+  	color:	var(--base00);
+  	font-family: var(--font-main-mono);
+  	display: inline-block:
+  }
+
+  :not(pre) > code{
+  	padding:	2pt;
+  	display:	inline-block;
+  	font-family: var(--font-main-mono);
+  }
+
+  .author, .date{
+  	text-align: center;
+  	margin: 0pt;
+  }
+  .author{	font-size:15pt;	}
+  .date{	font-size:13pt;	}
+  .footnotes ul, .footnotes ol{
+  	list-style-type: none;
+  }
+
+
+  @media screen {
+  	nav li > ul {
+  		transform: scale(0, 0);
+  		transform-origin: top left;
+  		font-size: 0px;
+  		transition: 0.5s ease-in all 0.25s;
+  	}
+  	nav li:hover > ul {
+  		transform: scale(1, 1);
+  		transform-origin: top left;
+  		font-size: inherit;
+  		transition: 0.25s ease-in all;
+  		transition-delay: 0.25s;
+  	}
+  	nav ul li a::after {
+  	    content: attr(href);
+  	}
+  	td{ overflow-wrap: break-word;}
+  	body{
+  		max-width:	60rem;
+  		margin: auto;
+  		font-size: 1rem;
+  		background: var(--color-main-bg-print);
+  		color: var(--color-main-text-print);
+  		font-family: var(--font-main-sans);
+  		padding: 0.5em 2em;
+  		/* border: 1px dashed var(--color-heading-text); */
+  		box-shadow: 5px 0px 5px rgba(0,0,0,0.2), -5px 0px 5px rgba(0,0,0,0.2);
+  	}
+  	
+  	h1{
+  		display:	block;
+  		background:	var(--color-heading-bg1);
+  		font-size: 1.5em;
+  		font-family: var(--font-heading-sans);
+  		text-decoration: none;
+  		color: var(--color-main-bg);
+  	}
+  	h2,h3{
+  		font-family: var(--font-heading-serif);
+  		color: var(--color-heading-text);
+  	}
+  	h2{	
+  		font-size: 1.4em;
+  		text-decoration:	underline;
+  	}
+  	h3{	font-size: 1.2em;	}
+  	a{	
+  		color: var(--color-link-text);
+  		text-decoration:	none;
+  	}
+  	
+  	
+  	figure{
+  		width: 90%;
+  		overflow: scroll;
+  		right:	1em;
+  		padding:	0.25em;
+  		border:	1px solid var(--color-main-text-print);
+  	}
+  	figcaption{	font-size:	0.8em;	}
+  	figure > img{	width:100%;	}	
+  	:not(pre) > code{
+  		background-color: var(--base2);
+  		color:	var(--base02);
+  	}
+  }
+
+
+  @media screen and (prefers-color-scheme: dark){
+  	figure{
+  		border-color: var(--color-main-text-screen);
+  	}
+  	html{ background: var(--color-main-bg-screen); }
+  	body{
+  		background: inherit; 
+  		/* background: rgba(255,255,255,0.03); */
+  		color: var(--color-main-text-screen);
+  		border: none;
+  		/* border:	1px dotted var(--color-main-text-screen); */
+  	}
+  	h1{
+  		background:	var(--color-heading-bg1-screen);
+  		color: var(--color-main-bg);
+  	}
+  	h2,h3{
+  		color: var(--color-heading-text-screen);
+  	}
+  	tr:nth-child(even), tr.even{
+  		background: var(--base03);
+  		color: var(--base0)
+  	}
+  	tr:nth-child(odd), tr.odd{
+  		background: var(--base02);
+  		color: var(--base0)
+  	}
+  	td:last-child{
+  		text-align: right
+  	}
+  	table{
+  		border: 0.2em solid var(--base00);
+  	}
+  	tr,td{ border-color: var(--base00); }
+  	pre{
+  		border: 1px solid var(--base0);
+  		background-color: var(--base02);
+  		color:	var(--base00);
+  	}
+  	img{
+  		max-width:	100%;
+  		height:	auto;
+  	}
+  	:not(pre) > code{
+  		background-color: var(--base02);
+  		color:	var(--base0);
+  		font-family: var(--font-main-mono);
+  	}
+
+  }
+
+  @media print{
+  	body{
+  		padding: 3mm;
+  		font-size: 12pt;
+  		background: var(--color-main-bg-print);
+  		color: var(--color-main-text-print);
+  		font-family: var(--font-main-serif);
+  	}
+  	a{	color: var(--color-main-text);	}
+  	
+  	h1{
+  		font-size: 22pt;
+  		font-family: var(--font-heading-serif);
+  		text-decoration: none;
+  		color: var(--color-heading-text);
+  	}
+  	h2,h3{
+  		font-family: var(--font-heading-serif);
+  		text-decoration: underline;
+  		color: var(--color-main-text);
+  	}
+  	h2{
+  		font-size: 14pt;
+  	}
+  	h3{	
+  		font-size: 13pt;
+  		page-break-after: avoid;
+  	}
+  	p, table{
+  		page-break-before: avoid;
+  		page-break-inside: avoid;
+  	}
+  	
+  	figure{
+  		padding:	0.25em;
+  		border:	1px dotted var(--color-main-text-print);
+  	}
+  	figcaption{	font-size:	8pt;	}
+  	nav ul li a::after {
+  	    content: target-counter(attr(href url), page, decimal);
+  	}
+  	#title-block-header{
+  		margin-top: 50vh;
+  		margin-bottom: 50vh;
+  		page-break-after: always;
+  		font-size: 2em;
+  	}
+  }
+
+  @page {
+  	size: A4 portrait;
+  	padding: 2cm;
+  	padding-left: 4cm;
+  }
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction-to-documentation">Introduction to documentation</a>
+<ul>
+<li><a href="#documentation-using-markdown">Documentation using Markdown</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction-to-documentation">Introduction to documentation</h1>
+<h2 id="documentation-using-markdown">Documentation using Markdown</h2>
+<blockquote>
+<p>This manual was set by a Graphic Systems phototypesetter driven by the troff formatting program operating under the UNIX system. The text of the manual was prepared using the ed text editor. - Thompson, K. and Ritche, D.M. (1973) Unix Programmer’s Manual. 4th edn. Bell Telephone Laboratories, Inc.</p>
+</blockquote>
+<p>There are countless ways of writing good documentation. From good ol’ pen and paperto sophisticated digital formats like PDF LaTeX or HTML. We’re gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily be processed to suit various needs.</p>
+<p>For presentation within fundamentals of digital fabrication this documentation’s Markdown source will be converted into HTML using GNU Make, the Pandoc parser and a CSS stylesheet for typesetting.</p>
+</body>
+</html>
