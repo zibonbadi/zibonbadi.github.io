@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>digifab01</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../styles/notes.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction-to-documentation">Introduction to documentation</a>
+<ul>
+<li><a href="#documentation-using-markdown">Documentation using Markdown</a>
+<ul>
+<li><a href="#markdown">Markdown</a></li>
+<li><a href="#pandoc">Pandoc</a></li>
+<li><a href="#make">Make</a></li>
+</ul></li>
+<li><a href="#project-documentation-using-git">Project documentation using Git</a>
+<ul>
+<li><a href="#git">Git</a></li>
+<li><a href="#github">GitHub</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction-to-documentation">Introduction to documentation</h1>
+<h2 id="documentation-using-markdown">Documentation using Markdown</h2>
+<blockquote>
+<p>This manual was set by a Graphic Systems phototypesetter driven by the troff formatting program operating under the UNIX system. The text of the manual was prepared using the ed text editor.</p>
+</blockquote>
+<ul>
+<li>Thompson, K. and Ritche, D.M. (1973) Unix Programmer’s Manual. 4th edn. Bell Telephone Laboratories, Inc.</li>
+</ul>
+<p>There are countless ways of writing good documentation. From good ol’ pen and paper to sophisticated digital formats like PDF LaTeX or HTML. We’re gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily suited towards various needs using simple automation.</p>
+<p>For presentation within fundamentals of digital fabrication this documentation’s Markdown source will be converted into HTML using GNU Make, the Pandoc parser and a CSS stylesheet for typesetting.</p>
+<h3 id="markdown">Markdown</h3>
+<p>If you wanna read Markdown, don’t worry about it as Markdown was developed to be especially readable in plaintext/source form. If you want an example, all sources are available on <a href="https://github.com/zibonbadi/zibonbadi.github.io">this very website’s GitHub repository</a>.</p>
+<p>Should you need a refresher on <em>writing</em> Markdown, I recommend reading <a href="https://www.markdownguide.org/cheat-sheet">this cheat sheet</a>.</p>
+<h3 id="pandoc">Pandoc</h3>
+<p><a href="https://pandoc.org/">Pandoc</a> is a command-line parser built for converting various document types and markup languages into each other. It is available for all common operating systems, as well as Windows.</p>
+<p>The following command was used to convert these Markdown notes into HTML pages:</p>
+<pre><code>pandoc md/file.md -s -c ../styles/style.css --toc --toc-depth=3 --highlight-style monochrome -o html/file.html</code></pre>
+<p>The <code>-s</code> option stands for <em>standalone</em>, meaning that certain base elements like the tag <code>&lt;head&gt;</code> are included in the final page. The <code>-c</code> option links a CSS sheet for various typesetting enhancements to increase readability. The flags <code>--toc</code> and <code>--toc-depth 3</code> include an auto-generated table of contents at the top of the page, as there is currently no standard way to let the web browser generate one. <code>--highlight-style</code> monochrome includes an auto-generated syntax highlighting style in the document for any code snippets found. <em>Monochrome</em> was chosen as it is simple and readable without clashing with the included custom stylesheet.</p>
+<h3 id="make">Make</h3>
+<p><a href="https://www.gnu.org/software/make/">GNU Make</a> is a libre implementation of Make, a system originally developed for the BSD operating system to automate the creation of programs, especially those written in C.</p>
+<p>Make’s concept is fairly simple: Make checks a so-called <em>Makefile</em> for predefined rules regarding certain files. Should a createable file not exist or be updated compared to files that depend on it, Make will execute predefined commands to recreate all necessary files.</p>
+<p>Given everything mentioned above, below you can see the contents the Makefile used to create individual project documentations:</p>
+<pre class="make"><code>format_in := md
+format_out := html
+
+dir_stylesheet := styles
+stylesheet_articles := notes.css
+stylesheet_reader := reader.css
+
+args_pandoc := -s -c ../$(dir_stylesheet)/$(stylesheet_articles) --toc --toc-depth=3 --highlight-style monochrome
+
+.PHONY: all
+
+all: $(shell ls $(format_in)/*.$(format_in) | sed &quot;s/$(format_in)/$(format_out)/g&quot;)
+
+# Sem?/[Fach]/html
+$(format_out):
+    mkdir $@
+
+$(format_out)/%.$(format_out): $(format_in)/%.$(format_in) | $(format_out)
+    pandoc $&lt; $(args_pandoc) -o $@ </code></pre>
+<p>Simply put: Make checks the directory <em>md</em> (short for Markdown) for updated documentation and executes Pandoc to generate HTML files into the directory <em>html</em>. For more on the exact Pandoc setup, see the section <em>Pandoc</em>.</p>
+<h2 id="project-documentation-using-git">Project documentation using Git</h2>
+<blockquote>
+<p>I’m an egotistical bastard, and I name all my projects after myself. First Linux, now git.</p>
+</blockquote>
+<ul>
+<li>Linus Torvalds</li>
+</ul>
+<p>All project documentations on this webpage have been progressively extended throughout the module using the Git version control system. Since people attending this class will most likely work using Windows, it is generally advised to clone the documentation repository using an SSH handle, since as of the writing of this document (November 2020) Git for Windows is reported to have security issues around HTTP connections.</p>
+<pre><code>git clone git@repository:user/repository</code></pre>
+<p>In order to use Git over SSH you will need to generate an public-private key pair for every machine you intend on using and register the public key in your Git repository.</p>
+<pre><code>ssh-keygen -t rsa -C email@address</code></pre>
+<p>Depending on your operating system, this program will create an RSA key pair based on the supplied email address. The keys will be supplied in plain text, such that you need to open the public key file and supply it’s contents to your Git repository’s SSH verification. Details on how to do this vary by vendor.</p>
+<h3 id="git">Git</h3>
+<p><a href="https://git-scm.com/">Git</a> is a version control system originally conceptualized by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> in order to manage the large-scale, decentralized development of the Linux kernel. It has since become widely used among software developers, especially among open-source projects.</p>
+<p>In human words: We’re gonna use Git to keep track of changes made to this website, especially as more documentation gets added later on.</p>
+<h3 id="github">GitHub</h3>
+<p>GitHub allows for easy hosting of custom websites for documentation purposes. All that is needed is to create a repository called <code>username.github.io</code> with an <em>index.html</em> file and it will be publicly viewable on <em>username.github.io</em></p>
+<p>Interesting to note here is that you could also write your website into the standard <em>README.md</em>, as GitHub will use it’s internal Markdown parser to display it’s contents.</p>
+</body>
+</html>

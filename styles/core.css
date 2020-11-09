@@ -1,0 +1,71 @@
+:root{
+		/*	Main	*/
+		--background-table: radial-gradient(#444, #111) black;
+		--color-main-bg: white;
+		--color-main-text: black;
+		--color-main-bg-screen: #1f1f1f;
+		--color-main-text-screen: #d9d9d9;
+		--color-main-bg-print: white;
+		--color-main-text-print: black;
+		
+		--font-main-sans: 'Liberation Sans', Liberation Sans, sans-serif;
+		--font-main-serif: 'Liberation Serif', Liberation Serif, serif;
+		--font-main-mono: 'Liberation Mono', Liberation Mono, monospace;
+		/*	Heading	*/
+		--color-heading-bg1:	#1f1f7f;
+		--color-heading-text: #5858ff;
+		--font-heading-serif: 'Liberation Serif', Liberation Serif, serif;
+		--font-heading-sans: 'Liberation Sans', Liberation Sans sans-serif;
+		--font-heading-mono: 'Liberation Mono', Liberation Mono, monospace;
+				
+		/*	Heading	(Dark mode)*/
+		--color-heading-bg1-screen:	#33337f;
+		--color-heading-text-screen: #7f7fff;
+				
+		/*	Links	*/
+		--color-link-text:	#8888ff;
+		
+		/*	Code	*/
+		--color-code-bg:	#00007f7f;
+		
+		/*	Solarized	*/
+		--base03:	#002b36;
+		--base02:	#073642;
+		--base01:	#586e75;
+		--base00:	#657b83;
+		--base3:	#fdf6e3;
+		--base2:	#eee8d5;
+		--base1:	#93a1a1;
+		--base0:	#839496;
+		
+		--yellow-solarized:    #b58900;
+		--orange-solarized:    #cb4b16;
+		--red-solarized:       #dc322f;
+		--magenta-solarized:   #d33682;
+		--violet-solarized:    #6c71c4;
+		--blue-solarized:      #268bd2;
+		--cyan-solarized:      #2aa198;
+		--green-solarized:     #859900;
+
+		/**	Table.text	*/
+		--color-table-text: #000;
+		--color-table-head: #334;
+		--color-table-head-text: #FFF;
+		/*	Table.Decoration	*/
+		--color-table-border: #99F;
+		--color-table-bg1: #FFF;
+		--color-table-bg2: #CCF;
+}
+
+@media screen {
+	body{
+		background: var(--color-main-bg-print);
+		color: var(--color-main-text-print);
+	}
+}
+
+@media screen and (prefers-color-scheme: dark){
+	body{
+		background: var(--color-main-bg-screen);
+		color: var(--color-main-text-screen);
+	}
