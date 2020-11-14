@@ -6,7 +6,7 @@
 
 - Thompson, K. and Ritche, D.M. (1973) Unix Programmer's Manual. 4th edn. Bell Telephone Laboratories, Inc.
 
-There are countless ways of writing good documentation. From good ol' pen and paper to sophisticated digital formats like PDF LaTeX or HTML. We're gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily suited towards various needs using simple automation.
+There are countless ways of writing good documentation. From good ol' pen and paper to sophisticated digital formats like PDF LaTeX or HTML. We're gonna use Markdown, as it is a lightweight, plaintext-oriented format which can easily be suited towards various needs using simple automation.
 
 For presentation within fundamentals of digital fabrication this documentation's Markdown source will be converted into HTML using GNU Make, the Pandoc parser and a CSS stylesheet for typesetting.
 
