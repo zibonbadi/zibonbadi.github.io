@@ -31,10 +31,42 @@
 </nav>
 <h1 id="d-and-3d-cad-basics">2D and 3D CAD basics</h1>
 <p>This document will outline some basic projects which have been created using Computer Aided Design (CAD) software. As an example using 2D CAD methodologies it will document the creation of a template sketch for a three-dimensional object constructed out of simple two-dimensional plates using the LibreCAD software.</p>
-<p>For three-dimensional CAD work, you will read about a sketch-based creation of a simple two-part lunchbox.</p>
-<p>All sources will once again be available on the repository.</p>
+<p>As project for a two-dimensional CAD design, you will read about the creation of an I/O shield design using standard measurements for common connector types such as VGA and USB. For three-dimensional CAD work, you will read about a sketch-based creation of a simple two-part lunchbox.</p>
+<p>All sources will once again be available on <a href="https://github.com/zibonbadi/zibonbadi.github.io/tree/main/download">the repository</a>.</p>
 <h2 id="d-cad-with-librecad">2D CAD with LibreCAD</h2>
-<p><em>Coming soon</em></p>
+<p>First I created a rectangle of size 200mm × 70mm as a basis for the I/O shield. Afterwards I began work on a pattern for airholes in the shield, since it’s use in rather compact cases require it to facilitate as much airflow as possible.</p>
+<figure>
+<img src="../img/lesson2/spaceship1.png" alt="Triangular spaceship" /><figcaption aria-hidden="true">Triangular spaceship</figcaption>
+</figure>
+<p>Out of a bit of creative insight I decided to create a pattern inspired by the arcade games “Asteroids” and “Space Invaders”, using the ports as an aesthetic component. The first "spaceship was set to be a simple triangle with fillets. For this I created a triangle of radius 2 × 2 with two fillets of radius 0.5mm and one fillet of 0.25mm to suggest a pointy front.</p>
+<p>After taking a few measurements from my laptop (Samsung NP350E7C) I followed up with creating all necessary ports. Below is a list of general measurements for each:</p>
+<ul>
+<li>Power connector: Circle of diameter 7mm (2-point circle tool)</li>
+<li>RJ-45 (Ethernet): 2-point line as shape combined from two rectangles. 13mm × 10mm rectangle with a 5mm × 5mm rectangle placed at the bottom center, outer sides touching. Measurements have been applied liberally as to allow easy disconnection of a cable.</li>
+<li>VGA: Rectangular area 18mm × 13mm with extensions of 6mm left and right each; 2mm inwards on each side. Created using the 2-point line tool constructing from a base rectangle. Circular area created using fillet and mirrored to the other side.</li>
+<li>HDMI: 2-point line based on a 18mm × 5mm rectangle. 3mm from bottom, additional indents of 1mm × 1mm diagonal narrow the bottom 1mm height portion.</li>
+<li>USB: Rectangle 18mm × 5mm</li>
+</ul>
+<p>Each of the ports were spaced about 5mm apart, except one: the RJ45/Power pair. While the distance between the two ports, distance between the RJ45 and VGA ports was about 75mm, as this space was reserved for the heatsink and vent. I simply decided to measure this distance using a fixed-length horizontal line.</p>
+<figure>
+<img src="../img/lesson2/ports.png" alt="Port distances" /><figcaption aria-hidden="true">Port distances</figcaption>
+</figure>
+<p>When connecting the pieces I discovered that the ports wouldn’t align with the expected precautious padding of 2cm, so I extended the rectangle to 24cm width:</p>
+<figure>
+<img src="../img/lesson2/oops.png" alt="Extending the rectangle" /><figcaption aria-hidden="true">Extending the rectangle</figcaption>
+</figure>
+<p>For the vent holes above the heatsink I wanted to create an eye-catching mothership, so first I constructed the face by using 2-point tool based lines (as normal rectangles aren’t trimmable) and a construction circle for trimming. Missing sides have been filled in using 2-point lines:</p>
+<figure>
+<img src="../img/lesson2/faceconstruct.png" alt="Constructing the face" /><figcaption aria-hidden="true">Constructing the face</figcaption>
+</figure>
+<p>I also decided to build a UFO for a bit of visual interest. I created it by cutting circles using the divide tool as well as creating a 2-point based rectangle with fillets:</p>
+<figure>
+<img src="../img/lesson2/ufo.png" alt="Constructing the face" /><figcaption aria-hidden="true">Constructing the face</figcaption>
+</figure>
+<p>Below you can see the final result:</p>
+<figure>
+<img src="../img/lesson2/2dcad_final.png" alt="Final design" /><figcaption aria-hidden="true">Final design</figcaption>
+</figure>
 <h2 id="d-cad-with-autodesk-fusion-360">3D CAD with Autodesk Fusion 360</h2>
 <p>As excercise I decided to create a two-part lunchbox in an industrial style of a size of 20cm x 20cm x 7cm (the final model will be 6cm in height as I intend the design to be securable using feet screws of an estimated height of 1cm). Inspiration for this design came from the <a href="https://en.wikipedia.org/wiki/Amiga_500">Commodore Amiga 500</a> and <a href="https://en.wikipedia.org/wiki/Atari_ST">Atari 1040ST</a> home computers.</p>
 <p>First I started a sketch by laying out a base plane of 20cm by 20cm size, followed by two more squares with base size of 19cm x 19cm and 18cm x 18cm respectively. For alignment I used simple grid snapping. Afterwards I drew a 39° angle left of the 20cm square using the line and measurement tools which I applied a rectangular pattern to so that it covers the entire square in an evenl spread pattern.</p>
