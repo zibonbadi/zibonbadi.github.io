@@ -8,8 +8,6 @@ All sources will once again be available on [the repository](https://github.com/
 
 ## 2D CAD with LibreCAD
 
-*Coming soon*
-
 First I created a rectangle of size 200 &multiply; 70mm as a basis for the I/O shield. Afterwards I began work on a pattern for airholes in the shield, since it's use in rather compact cases require it to facilitate as much airflow as possible.
 
 ![Triangular spaceship](../img/lesson2/spaceship1.png)
@@ -44,10 +42,13 @@ Below you can see the final result:
 
 ![Final design](../img/lesson2/2dcad_final.png)
 
+The final design is also available for download[^2dcad]
+
 ## 3D CAD with Autodesk Fusion 360
    
 As excercise I decided to create a two-part lunchbox in an industrial style of a size of 20cm x 20cm x 7cm (the final model will be 6cm in height as I intend the design to be securable using feet screws of an estimated height of 1cm). 
 Inspiration for this design came from the [Commodore Amiga 500](https://en.wikipedia.org/wiki/Amiga_500) and [Atari 1040ST](https://en.wikipedia.org/wiki/Atari_ST) home computers.
+The final design can be downloaded through the footnotes[^3dcad]
 
 First I started a sketch by laying out a base plane of 20cm by 20cm size, followed by two more squares with base size of 19cm x 19cm and 18cm x 18cm respectively. For alignment I used simple grid snapping. Afterwards I drew a 39° angle left of the 20cm square using the line and measurement tools which I applied a rectangular pattern to so that it covers the entire square in an evenl spread pattern.
 
@@ -73,3 +74,5 @@ Below you can see a screenshot for the final result:
 
 
 
+[^2dcad]: [Download link for the 2D CAD sketch at the repository](../download/Case01%20v12.f3d).
+[^3dcad]: [Download link for the 3D CAD sketch at the repository](../download/ioshield.dxf).
