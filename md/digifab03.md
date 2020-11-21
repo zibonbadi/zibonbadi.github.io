@@ -40,15 +40,15 @@ To connect head and front feet to the torso, I created a shoulder bone with 4 jo
 - One at the top for the snout bone: `(MaterialWidth+Kerf)^2^`
 - One in the middle for the torso to connect: `(MaterialWidth+Kerf)&times;((BoneWidth/2)+Kerf)` 
 
-![Designing the hindlegs from the torso](../img/lesson3/shoulderbone.png)
+![Measurements of the shoulder bone](../img/lesson3/shoulderbone.png)
 
 The front legs I created using some rectangles and a spline. At the top you can see the aforementioned shoulderbone connection and at the bottom you can see connection joints for a set of stands that I decided to create for better standing. For the legs' thickness I used the regular bone thickness just in case of necessary adjustments:
 
-![Designing the hindlegs from the torso](../img/lesson3/frontlegs.png)
+![View of the fron legs' 2D sketch](../img/lesson3/frontlegs.png)
 
 For stable standing I also created four standing plates for the feet to fit into. They are of 20mm radius with a slot in the middle of `(MaterialWidth+Kerf)&times;((BoneWidth/2)+Kerf)`. :
 
-![Designing the hindlegs from the torso](../img/lesson3/feetstands.png)
+![Feet stand design](../img/lesson3/feetstands.png)
 
 Designing the Legs turned out to be a mostly non-parametric procedure, as the complex shape only served aesthetics, aside from a few necessary joints.
 
@@ -56,7 +56,7 @@ Designing the Legs turned out to be a mostly non-parametric procedure, as the co
 
 Below you can see the hip bone, which has been used to connect the two hindleg pieces to the main torso:
 
-![Designing the hindlegs from the torso](../img/lesson3/hipbone.png)
+![Designing the hip bone](../img/lesson3/hipbone.png)
 
 ### The tail
 
