@@ -1,3 +1,5 @@
+[^cadsketch]: [Download link for the fox model sketch](../download/foxfigure.dxf)
+
 # Parametric design and Laser cutting
 
 This time we're diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.
@@ -70,6 +72,26 @@ The gaps have been defined through a rectangular pattern on the bone and snappin
 
 ## Laser Cutting
    
-*Coming soon*
+Much like expected I was able to use 3mm wood to turn my laser cut into reality.
 
-[^cadsketch]: [Download link for the fox model sketch](../download/foxfigure.dxf)
+However, after doing a test cut, I started to notice a problem with the Kerf:
+
+The *Kerf* is a measurement that is used to describe the amount of material a cutter removes from the used resource in order to cut it.
+
+Although my estimate of 0.2mm Kerf wasreasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.
+
+![Loose test cut](../img/lesson3/testcut.jpg)
+
+Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version due to calculation issues, something that could've been an easy fix.
+
+After defining all necessary parameters in Rhinoceros (Dark engravings on 100% power/speed and light engravings using 75% speed with 25% power), the final cutting job ended up taking about 33 minutes, mostly due to the legs' engravings being spaced quite far apart. Thus I recommend anyone doing laser cutting with engravings to closely clump together engraving areas by type to speed up the process.
+
+![Cutting job displayed on the laser cutter](../img/lesson3/jobtime.jpg)
+
+In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail's bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces' length in order to center them. Lastly, the pelvis bone was measured to shortly such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:
+
+![The half-assembled fox model featuring manufacturing errors](../img/lesson3/components.jpg)
+
+Following makeshift assembly using glue to fixate the joints, as well as doing some correctional cutting using a good old saw, you can see the final result below
+
+![Final assembly of the fox model](../img/lesson3/model_final.png)
