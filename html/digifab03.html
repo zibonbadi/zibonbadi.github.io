@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Parametric design and Laser cutting</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../styles/notes.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Parametric design and Laser cutting</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#parametric-design">Parametric Design</a>
+<ul>
+<li><a href="#the-head">The head</a></li>
+<li><a href="#the-torso-and-the-legs">The torso and the legs</a></li>
+<li><a href="#the-tail">The tail</a></li>
+<li><a href="#final-sketch">Final sketch</a></li>
+</ul></li>
+<li><a href="#laser-cutting">Laser Cutting</a></li>
+</ul>
+</nav>
+<p>This time we’re diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.</p>
+<h2 id="parametric-design">Parametric Design</h2>
+<p>For this excercise I decided to create a simple geometric model of a fox, which will be “textured” using different engravings. The final result can be found here<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Due to it’s three-dimensional, joint-based approach our model will be fairly complex, thus I will try to simplify explaining some of the components’ designs as the main focus lies on how parametric design automates and structures it. Just as a primer, you can see the final spreadsheet down below:</p>
+<figure>
+<img src="../img/lesson3/spreadsheet.png" alt="Final parameter spreadsheet" /><figcaption aria-hidden="true">Final parameter spreadsheet</figcaption>
+</figure>
+<p>Also keep in mind that not all decisions in a parametric design can be entirely automated. Depending on the type of material used, manual adjustments need to be made. For design purposes I assumed the following:</p>
+<ul>
+<li>3mm wood plates</li>
+<li>No bendings (as bending patterns might have complicated the design further)</li>
+<li>0.2mm Kerf (will be explained later on)</li>
+</ul>
+<h3 id="the-head">The head</h3>
+<p>Let’s start off with something rather simple, then. Below you can see the fox’ face plate and ears. The square shapes at the top of the head as well as the bottom of the ears serve as joints and have been measured <em>MaterialThickness+Kerf</em> for each side, with parallel constraints to ensure clean and consistent insertion despite odd angles. All the other inner shapes have been defined to serve as reference points for engravings later on:</p>
+<figure>
+<img src="../img/lesson3/foxface.png" alt="The fox’ face plate and ears." /><figcaption aria-hidden="true">The fox’ face plate and ears.</figcaption>
+</figure>
+<p>As fox faces are not flat of course, below you can see the snout, which has been designed with a size of</p>
+<p>Below the ears we encounter the first of what I refer to as <em>bones</em>. These are little helper pieces which are supposed to serve complex joints between similarly orientated cuts, since the suspected 3mm wood we’re about to use for assembly is unable to safely bend without use of complex patterns.</p>
+<p>For assembly all three snout pieces as well as the face plate are meant to be mounted on the aforementioned snout bone. The sole down-facing notch to the right will serve mounting the face to the rest of the body, as will soon be explained.</p>
+<h3 id="the-torso-and-the-legs">The torso and the legs</h3>
+<p>Designing the torso turned out a tricky as precise measurements were needed across various angled joints to ensure a stable resting position of the torso and feet.</p>
+<p>To connect head and front feet to the torso, I created a shoulder bone with 4 joints:</p>
+<ul>
+<li>Two at the lower sides for the legs: <code>(MaterialWidth+Kerf)&amp;times;((BoneWidth/2)+Kerf)</code>. The legs have been adjusted to fit in a 45deg angle with the shoulder bone</li>
+<li>One at the top for the snout bone: <code>(MaterialWidth+Kerf)^2^</code></li>
+<li>One in the middle for the torso to connect: <code>(MaterialWidth+Kerf)&amp;times;((BoneWidth/2)+Kerf)</code></li>
+</ul>
+<figure>
+<img src="../img/lesson3/shoulderbone.png" alt="Measurements of the shoulder bone" /><figcaption aria-hidden="true">Measurements of the shoulder bone</figcaption>
+</figure>
+<p>The front legs I created using some rectangles and a spline. At the top you can see the aforementioned shoulderbone connection and at the bottom you can see connection joints for a set of stands that I decided to create for better standing. For the legs’ thickness I used the regular bone thickness just in case of necessary adjustments:</p>
+<figure>
+<img src="../img/lesson3/frontlegs.png" alt="View of the fron legs’ 2D sketch" /><figcaption aria-hidden="true">View of the fron legs’ 2D sketch</figcaption>
+</figure>
+<p>For stable standing I also created four standing plates for the feet to fit into. They are of 20mm radius with a slot in the middle of <code>(MaterialWidth+Kerf)&amp;times;((BoneWidth/2)+Kerf)</code>. :</p>
+<figure>
+<img src="../img/lesson3/feetstands.png" alt="Feet stand design" /><figcaption aria-hidden="true">Feet stand design</figcaption>
+</figure>
+<p>Designing the Legs turned out to be a mostly non-parametric procedure, as the complex shape only served aesthetics, aside from a few necessary joints.</p>
+<figure>
+<img src="../img/lesson3/hindleg_measurements.png" alt="Designing the hindlegs from the torso" /><figcaption aria-hidden="true">Designing the hindlegs from the torso</figcaption>
+</figure>
+<p>Below you can see the hip bone, which has been used to connect the two hindleg pieces to the main torso:</p>
+<figure>
+<img src="../img/lesson3/hipbone.png" alt="Designing the hip bone" /><figcaption aria-hidden="true">Designing the hip bone</figcaption>
+</figure>
+<h3 id="the-tail">The tail</h3>
+<p>For the tail I designed a tail bone (visible at the bottom of the image below) which would stick perpendicular into the fox’ back with circles of 3 sizes stuck onto it, suggesting volume.</p>
+<p>The gaps have been defined through a rectangular pattern on the bone and snapping with defined distance between the circle’s midpoint and one of the gap’s corners for centering in case of the “bushes”. The gaps’ size has been defined using standard proportions (MaterialWidth, Kerf and BoneWidth/2:</p>
+<figure>
+<img src="../img/lesson3/tail.png" alt="Tail components" /><figcaption aria-hidden="true">Tail components</figcaption>
+</figure>
+<h3 id="final-sketch">Final sketch</h3>
+<figure>
+<img src="../img/lesson3/fox_final.png" alt="Final design" /><figcaption aria-hidden="true">Final design</figcaption>
+</figure>
+<h2 id="laser-cutting">Laser Cutting</h2>
+<p>Much like expected I was able to use 3mm wood to turn my laser cut into reality.</p>
+<p>However, after doing a test cut, I started to notice a problem with the Kerf:</p>
+<p>The <em>Kerf</em> is a measurement that is used to describe the amount of material a cutter removes from the used resource in order to cut it.</p>
+<p>Although my estimate of 0.2mm Kerf wasreasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.</p>
+<figure>
+<img src="../img/lesson3/testcut.jpg" alt="Loose test cut" /><figcaption aria-hidden="true">Loose test cut</figcaption>
+</figure>
+<p>Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version wasn’t possible due to calculation issues, something that could’ve been an easy fix.</p>
+<p>After defining all necessary parameters in Rhinoceros (parameters listed below), the final cutting job ended up taking about 33 minutes, mostly due to the legs’ engravings being spaced quite far apart. Thus I recommend anyone doing laser cutting with engravings to closely clump together engraving areas by type to speed up the process.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Laser power</th>
+<th>Laser speed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dark engravings</td>
+<td>100%</td>
+<td>75%</td>
+</tr>
+<tr class="even">
+<td>Light engravings</td>
+<td>25%</td>
+<td>75%</td>
+</tr>
+<tr class="odd">
+<td>Markings</td>
+<td>30%</td>
+<td>80%</td>
+</tr>
+<tr class="even">
+<td>Cuts</td>
+<td>100%</td>
+<td>5%</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="../img/lesson3/jobtime.jpg" alt="Cutting job displayed on the laser cutter" /><figcaption aria-hidden="true">Cutting job displayed on the laser cutter</figcaption>
+</figure>
+<p>In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail’s bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces’ length in order to center them. Lastly, the pelvis bone was measured to shortly such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:</p>
+<figure>
+<img src="../img/lesson3/components.jpg" alt="The half-assembled fox model featuring manufacturing errors" /><figcaption aria-hidden="true">The half-assembled fox model featuring manufacturing errors</figcaption>
+</figure>
+<p>Following makeshift assembly using glue to fixate the joints, as well as doing some correctional cutting using a good old saw, you can see the final result below</p>
+<figure>
+<img src="../img/lesson3/model_final.png" alt="Final assembly of the fox model" /><figcaption aria-hidden="true">Final assembly of the fox model</figcaption>
+</figure>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="../download/foxfigure.dxf">Download link for the fox model sketch</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

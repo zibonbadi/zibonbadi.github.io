@@ -1,12 +1,21 @@
-% Parametric design and Laser cutting
+% Microcontroller programming using Arduino
 
 [^cadsketch]: [Download link for the fox model sketch](../download/foxfigure.dxf)
 
 This time we're diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.
 
-## Parametric Design
+## Setting up the Arduino
 
-For this excercise I decided to create a simple geometric model of a fox, which will be "textured" using different engravings. The final result can be found here[^cadsketch].
+For this excercise I've been supplied with the following hardware:
+
+|Hardware piece|Count|
+|--|--|
+|Arduino Uno| 1|
+|Breadboard| 1|
+|USB cable type A &rarr; type C| 1|
+|Resistor &omega;| x|
+|Infill pattern| x|
+|Build plate adhesion type| x|
 
 Due to it's three-dimensional, joint-based approach our model will be fairly complex, thus I will try to simplify explaining some of the components' designs as the main focus lies on how parametric design automates and structures it. Just as a primer, you can see the final spreadsheet down below:
 
@@ -70,33 +79,32 @@ The gaps have been defined through a rectangular pattern on the bone and snappin
 
 ![Final design](../img/lesson3/fox_final.png)
 
-## Laser Cutting
+## Printing the piece
    
-Much like expected I was able to use 3mm wood to turn my laser cut into reality.
+### Preparation in Cura
 
-However, after doing a test cut, I started to notice a problem with the Kerf:
+Generally there was little issue regarding overhang and support. *Generally*. More on that later. As for settings, I used the standard settings for generic PLA material using an Ultimaker S5 printer. Deviances are listed in the table below:
 
-The *Kerf* is a measurement that is used to describe the amount of material a cutter removes from the used resource in order to cut it.
-
-Although my estimate of 0.2mm Kerf wasreasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.
+|Variable|Value|
+|--|--|
+|Layer height| 0.2mm|
+|Wall line count| 8|
+|Top layers| 2|
+|Infill density| 100%|
+|Infill pattern| Tri-Hexagon|
+|Build plate adhesion type| Skirt|
 
 ![Loose test cut](../img/lesson3/testcut.jpg)
 
 Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version wasn't possible due to calculation issues, something that could've been an easy fix.
 
-After defining all necessary parameters in Rhinoceros (parameters listed below), the final cutting job ended up taking about 33 minutes, mostly due to the legs' engravings being spaced quite far apart. Thus I recommend anyone doing laser cutting with engravings to closely clump together engraving areas by type to speed up the process.
+### Final result
 
-
-|Attribute|Laser power|Laser speed|
-|--|--|--|
-|Dark engravings| 100%| 75%|
-|Light engravings| 25%| 75%|
-|Markings| 30% | 80%|
-|Cuts| 100%| 5%|
+After the final piece was finished, it looked a bit fragile, but turned out quite sturdy, likely due to the 100% infill density. However, there seemed to be a printing failure on the overhang of one of the sides, which rendered the inner screwhole unusable:
 
 ![Cutting job displayed on the laser cutter](../img/lesson3/jobtime.jpg)
 
-In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail's bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces' length in order to center them. Lastly, the pelvis bone was measured to shortly such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:
+Testing the piece on the corner of a 3mm wooden plate, attachment was already sturdy and tight, such that the additional planned screw might not even be necessary in the final project. Just for added structural security, I'm still going to keep it though.
 
 ![The half-assembled fox model featuring manufacturing errors](../img/lesson3/components.jpg)
 
