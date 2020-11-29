@@ -39,7 +39,7 @@ Once again, the exported STL model[^stlmodel] and finished gCode file[^gcode] ar
 
 After the final piece was finished, it looked a bit fragile, but turned out quite sturdy, likely due to the 100% infill density. However, there seemed to be a printing failure on the overhang of one of the sides, which rendered the inner screwhole unusable:
 
-![Botched overhang on the printed corner joint](../img/lesson3/faberror.jpg)
+![Botched overhang on the printed corner joint](../img/lesson4/faberror.jpg)
 
 Testing the piece on the corner of a 3mm wooden plate, attachment was already sturdy and tight, such that the additional planned screw might not even be necessary in the final project. Just for added structural security, I'm still going to keep it though.
 
