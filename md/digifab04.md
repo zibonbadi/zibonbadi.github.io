@@ -1,7 +1,7 @@
 % 3D printing a corner joint
 
 [^cornerproject]: [Fusion 360 project download](../download/cornerpiece_test1.f3d)
-[^gcode]: [gCode file download](../download/USM5_case2_cornerpiece1_test1.gcode)
+[^gcode]: [gCode file download](../download/UMS5_case2_cornerpiece1_test1.gcode)
 [^stlmodel]: [STL model download](../download/case2_cornerpiece1.stl)
 
 This time we're diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.
