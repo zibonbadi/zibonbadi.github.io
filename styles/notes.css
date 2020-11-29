@@ -17,12 +17,12 @@ nav li::before{
  }
 figcaption::before{ 
 	counter-increment: figcount;
-	content: "Abbildung "counter(figcount) ": ";
+	content: "Figure "counter(figcount) ": ";
 	font-weight: bold;
  }
 table caption::before{ 
 	counter-increment: tabcount;
-	content: "Tabelle "counter(tabcount) ": ";
+	content: "Table "counter(tabcount) ": ";
 	font-weight: bold;
  }
 nav ul li a::after {

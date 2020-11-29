@@ -1,4 +1,4 @@
-# Introduction to documentation
+% Introduction to documentation
 
 ## Documentation using Markdown
 
@@ -82,6 +82,20 @@ Depending on your operating system, this program will create an RSA key pair bas
 [Git](https://git-scm.com/) is a version control system originally conceptualized by [Linus Torvalds]( https://en.wikipedia.org/wiki/Linus_Torvalds ) in order to manage the large-scale, decentralized development of the Linux kernel. It has since become widely used among software developers, especially among open-source projects.
 
 In human words: We're gonna use Git to keep track of changes made to this website, especially as more documentation gets added later on.
+
+For people unfamiliar with Git, after cloning you might want to update your repository using `git pull`.
+
+After you're done with your changes, you need to add them to the change history using `git add .` and file a commit. Usually I use the following command:
+
+```Bash
+git commit -m "Whatever changes I made"
+```
+
+Lastly, you need to . One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches *main* rather than *master*.
+
+```Bash
+git push origin main
+```
 
 ### GitHub
 

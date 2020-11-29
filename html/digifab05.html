@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Parametric design and Laser cutting</title>
+  <title>Microcontroller programming using Arduino</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -21,23 +21,61 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Parametric design and Laser cutting</h1>
+<h1 class="title">Microcontroller programming using Arduino</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#parametric-design">Parametric Design</a>
+<li><a href="#setting-up-the-arduino">Setting up the Arduino</a>
 <ul>
 <li><a href="#the-head">The head</a></li>
 <li><a href="#the-torso-and-the-legs">The torso and the legs</a></li>
 <li><a href="#the-tail">The tail</a></li>
 <li><a href="#final-sketch">Final sketch</a></li>
 </ul></li>
-<li><a href="#laser-cutting">Laser Cutting</a></li>
+<li><a href="#printing-the-piece">Printing the piece</a>
+<ul>
+<li><a href="#preparation-in-cura">Preparation in Cura</a></li>
+<li><a href="#final-result">Final result</a></li>
+</ul></li>
 </ul>
 </nav>
 <p>This time we’re diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.</p>
-<h2 id="parametric-design">Parametric Design</h2>
-<p>For this excercise I decided to create a simple geometric model of a fox, which will be “textured” using different engravings. The final result can be found here<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<h2 id="setting-up-the-arduino">Setting up the Arduino</h2>
+<p>For this excercise I’ve been supplied with the following hardware:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Hardware piece</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arduino Uno</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Breadboard</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>USB cable type A → type C</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Resistor ω</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>Infill pattern</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>Build plate adhesion type</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
 <p>Due to it’s three-dimensional, joint-based approach our model will be fairly complex, thus I will try to simplify explaining some of the components’ designs as the main focus lies on how parametric design automates and structures it. Just as a primer, you can see the final spreadsheet down below:</p>
 <figure>
 <img src="../img/lesson3/spreadsheet.png" alt="Final parameter spreadsheet" /><figcaption aria-hidden="true">Final parameter spreadsheet</figcaption>
@@ -93,51 +131,53 @@
 <figure>
 <img src="../img/lesson3/fox_final.png" alt="Final design" /><figcaption aria-hidden="true">Final design</figcaption>
 </figure>
-<h2 id="laser-cutting">Laser Cutting</h2>
-<p>Much like expected I was able to use 3mm wood to turn my laser cut into reality.</p>
-<p>However, after doing a test cut, I started to notice a problem with the Kerf:</p>
-<p>The <em>Kerf</em> is a measurement that is used to describe the amount of material a cutter removes from the used resource in order to cut it.</p>
-<p>Although my estimate of 0.2mm Kerf wasreasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.</p>
-<figure>
-<img src="../img/lesson3/testcut.jpg" alt="Loose test cut" /><figcaption aria-hidden="true">Loose test cut</figcaption>
-</figure>
-<p>Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version wasn’t possible due to calculation issues, something that could’ve been an easy fix.</p>
-<p>After defining all necessary parameters in Rhinoceros (parameters listed below), the final cutting job ended up taking about 33 minutes, mostly due to the legs’ engravings being spaced quite far apart. Thus I recommend anyone doing laser cutting with engravings to closely clump together engraving areas by type to speed up the process.</p>
+<h2 id="printing-the-piece">Printing the piece</h2>
+<h3 id="preparation-in-cura">Preparation in Cura</h3>
+<p>Generally there was little issue regarding overhang and support. <em>Generally</em>. More on that later. As for settings, I used the standard settings for generic PLA material using an Ultimaker S5 printer. Deviances are listed in the table below:</p>
 <table>
 <thead>
 <tr class="header">
-<th>Attribute</th>
-<th>Laser power</th>
-<th>Laser speed</th>
+<th>Variable</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Dark engravings</td>
-<td>100%</td>
-<td>75%</td>
+<td>Layer height</td>
+<td>0.2mm</td>
 </tr>
 <tr class="even">
-<td>Light engravings</td>
-<td>25%</td>
-<td>75%</td>
+<td>Wall line count</td>
+<td>8</td>
 </tr>
 <tr class="odd">
-<td>Markings</td>
-<td>30%</td>
-<td>80%</td>
+<td>Top layers</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td>Cuts</td>
+<td>Infill density</td>
 <td>100%</td>
-<td>5%</td>
+</tr>
+<tr class="odd">
+<td>Infill pattern</td>
+<td>Tri-Hexagon</td>
+</tr>
+<tr class="even">
+<td>Build plate adhesion type</td>
+<td>Skirt</td>
 </tr>
 </tbody>
 </table>
 <figure>
+<img src="../img/lesson3/testcut.jpg" alt="Loose test cut" /><figcaption aria-hidden="true">Loose test cut</figcaption>
+</figure>
+<p>Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version wasn’t possible due to calculation issues, something that could’ve been an easy fix.</p>
+<h3 id="final-result">Final result</h3>
+<p>After the final piece was finished, it looked a bit fragile, but turned out quite sturdy, likely due to the 100% infill density. However, there seemed to be a printing failure on the overhang of one of the sides, which rendered the inner screwhole unusable:</p>
+<figure>
 <img src="../img/lesson3/jobtime.jpg" alt="Cutting job displayed on the laser cutter" /><figcaption aria-hidden="true">Cutting job displayed on the laser cutter</figcaption>
 </figure>
-<p>In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail’s bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces’ length in order to center them. Lastly, the pelvis bone was measured to shortly such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:</p>
+<p>Testing the piece on the corner of a 3mm wooden plate, attachment was already sturdy and tight, such that the additional planned screw might not even be necessary in the final project. Just for added structural security, I’m still going to keep it though.</p>
 <figure>
 <img src="../img/lesson3/components.jpg" alt="The half-assembled fox model featuring manufacturing errors" /><figcaption aria-hidden="true">The half-assembled fox model featuring manufacturing errors</figcaption>
 </figure>
@@ -145,11 +185,5 @@
 <figure>
 <img src="../img/lesson3/model_final.png" alt="Final assembly of the fox model" /><figcaption aria-hidden="true">Final assembly of the fox model</figcaption>
 </figure>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p><a href="../download/foxfigure.dxf">Download link for the fox model sketch</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 </body>
 </html>

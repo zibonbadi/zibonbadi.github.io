@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>digifab01</title>
+  <title>Introduction to documentation</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -12,6 +12,50 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { font-weight: bold; } /* Alert */
+    code span.an { font-style: italic; } /* Annotation */
+    code span.cf { font-weight: bold; } /* ControlFlow */
+    code span.co { font-style: italic; } /* Comment */
+    code span.cv { font-style: italic; } /* CommentVar */
+    code span.do { font-style: italic; } /* Documentation */
+    code span.dt { text-decoration: underline; } /* DataType */
+    code span.er { font-weight: bold; } /* Error */
+    code span.in { font-style: italic; } /* Information */
+    code span.kw { font-weight: bold; } /* Keyword */
+    code span.pp { font-weight: bold; } /* Preprocessor */
+    code span.wa { font-style: italic; } /* Warning */
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="../styles/notes.css" />
@@ -20,9 +64,10 @@
   <![endif]-->
 </head>
 <body>
+<header id="title-block-header">
+<h1 class="title">Introduction to documentation</h1>
+</header>
 <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#introduction-to-documentation">Introduction to documentation</a>
 <ul>
 <li><a href="#documentation-using-markdown">Documentation using Markdown</a>
 <ul>
@@ -35,10 +80,8 @@
 <li><a href="#git">Git</a></li>
 <li><a href="#github">GitHub</a></li>
 </ul></li>
-</ul></li>
 </ul>
 </nav>
-<h1 id="introduction-to-documentation">Introduction to documentation</h1>
 <h2 id="documentation-using-markdown">Documentation using Markdown</h2>
 <blockquote>
 <p>This manual was set by a Graphic Systems phototypesetter driven by the troff formatting program operating under the UNIX system. The text of the manual was prepared using the ed text editor.</p>
@@ -95,6 +138,11 @@ $(format_out)/%.$(format_out): $(format_in)/%.$(format_in) | $(format_out)
 <h3 id="git">Git</h3>
 <p><a href="https://git-scm.com/">Git</a> is a version control system originally conceptualized by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> in order to manage the large-scale, decentralized development of the Linux kernel. It has since become widely used among software developers, especially among open-source projects.</p>
 <p>In human words: We’re gonna use Git to keep track of changes made to this website, especially as more documentation gets added later on.</p>
+<p>For people unfamiliar with Git, after cloning you might want to update your repository using <code>git pull</code>.</p>
+<p>After you’re done with your changes, you need to add them to the change history using <code>git add .</code> and file a commit. Usually I use the following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit -m <span class="st">&quot;Whatever changes I made&quot;</span></span></code></pre></div>
+<p>Lastly, you need to . One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches <em>main</em> rather than <em>master</em>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div>
 <h3 id="github">GitHub</h3>
 <p>GitHub allows for easy hosting of custom websites for documentation purposes. All that is needed is to create a repository called <code>username.github.io</code> with an <em>index.html</em> file and it will be publicly viewable on <em>username.github.io</em></p>
 <p>Interesting to note here is that you could also write your website into the standard <em>README.md</em>, as GitHub will use it’s internal Markdown parser to display it’s contents.</p>
