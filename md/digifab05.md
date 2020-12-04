@@ -1,8 +1,6 @@
 % Microcontroller programming using Arduino
 
-[^cadsketch]: [Download link for the fox model sketch](../download/foxfigure.dxf)
-
-This time we're diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.
+[^dlsrc]: [Morse code transmitter source code](../src/morsecode.c)
 
 ## Setting up the Arduino
 
@@ -10,104 +8,223 @@ For this excercise I've been supplied with the following hardware:
 
 |Hardware piece|Count|
 |--|--|
-|Arduino Uno| 1|
+|Arduino Uno A7| 1|
 |Breadboard| 1|
 |USB cable type A &rarr; type C| 1|
-|Resistor &omega;| x|
-|Infill pattern| x|
-|Build plate adhesion type| x|
+|Resistor &omega;| several|
+|Ultrasonic sensor| 1|
+|Beeper| 1|
+|Controllable LED light| 1|
+|Potentiometer| 1|
+|Cable; double male| several|
+|5 cable band; double female| 2|
+|2 cable band; double male| 1|
+|2 cable band; male/female| 2|
+|Button| 1|
 
-Due to it's three-dimensional, joint-based approach our model will be fairly complex, thus I will try to simplify explaining some of the components' designs as the main focus lies on how parametric design automates and structures it. Just as a primer, you can see the final spreadsheet down below:
+I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
 
-![Final parameter spreadsheet](../img/lesson3/spreadsheet.png)
+For this project I wired up a button to pin 1 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I'd be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:
 
-Also keep in mind that not all decisions in a parametric design can be entirely automated. Depending on the type of material used, manual adjustments need to be made. For design purposes I assumed the following:
+![Wiring for the morse code emitter](../img/lesson5/morsecode_wires.jpg)
 
-- 3mm wood plates
-- No bendings (as bending patterns might have complicated the design further)
-- 0.2mm Kerf (will be explained later on)
+## Programming
 
-### The head
+First step was to install the Arduino into your computer. This might range from self-explanatory to something you should already know how to do, depending on your choice of operating system and programming method.
 
-Let's start off with something rather simple, then. Below you can see the fox' face plate and ears. The square shapes at the top of the head as well as the bottom of the ears serve as joints and have been measured *MaterialThickness+Kerf* for each side, with parallel constraints to ensure clean and consistent insertion despite odd angles. All the other inner shapes have been defined to serve as reference points for engravings later on:
+For simplicity's sake I used Windows and the official Arduino IDE for programming, however since I'm a regular Arch Linux user ~~(alright Manjaro, I'll admit it ;P)~~ I will outline some common alternatives shortly:
 
-![The fox' face plate and ears.](../img/lesson3/foxface.png)
+Thankfully, as it is Java-based the official Arduino IDE is available in most repositories. However you might notice that upon startup your newly plugged-in Arduino might not get recognized. Usually this ends up being an issue of read/write permissions on behalf of the your kernel. The solution is to give yourself read/write permissions to the Arduino's serial device, either by using `ls -l /dev` and adding yourself to the appropriate user group or by using `chmod` to change file access permissions. The serial device to look for is usually either `/dev/ttyACM0` (official Arduino) or `/dev/ttyUSB0` (selfbuilt Arduino) 
 
-As fox faces are not flat of course, below you can see the snout, which has been designed with a size of
+If you feel like diving into advanced microcontroller programming or you just prefer Vim, you can also use the Arduino AVR tools with your trusty old GCC. I'm only gonna mention it here as I haven't yet found the time to configure it.
 
-Below the ears we encounter the first of what I refer to as *bones*. These are little helper pieces which are supposed to serve complex joints between similarly orientated cuts, since the suspected 3mm wood we're about to use for assembly is unable to safely bend without use of complex patterns.
+Lastly you might run into issues when accessing Serial on Arch-based distributions. After reading around in the forums, this currently seems to be a bug and it is suggested to do a workaround using regular terminal tools such as `screen` or `tail -f`.
 
-For assembly all three snout pieces as well as the face plate are meant to be mounted on the aforementioned snout bone. The sole down-facing notch to the right will serve mounting the face to the rest of the body, as will soon be explained.
 
-### The torso and the legs
+As you will be able to see in the program's source code later on, I decided to add a buffer probing function using the letter '?' for Serial IO:
 
-Designing the torso turned out a tricky as precise measurements were needed across various angled joints to ensure a stable resting position of the torso and feet.
+![Serial IO for the morse code emitter program](../img/lesson5/morsecode_serial.png)
 
-To connect head and front feet to the torso, I created a shoulder bone with 4 joints:
+Below you can find the entire program's source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well[^dlsrc].
 
-- Two at the lower sides for the legs: `(MaterialWidth+Kerf)&times;((BoneWidth/2)+Kerf)`. The legs have been adjusted to fit in a 45deg angle with the shoulder bone
-- One at the top for the snout bone: `(MaterialWidth+Kerf)^2^`
-- One in the middle for the torso to connect: `(MaterialWidth+Kerf)&times;((BoneWidth/2)+Kerf)` 
+```C
+//Some constants for defining arbitrary things
+const int MESSAGE_LENGTH = 64;
+const int buttonPin = 2;     // the number of the pushbutton pin
+const int ledPin =  LED_BUILTIN;      // the number of the LED pin
+const int pulseLen = 50;
 
-![Measurements of the shoulder bone](../img/lesson3/shoulderbone.png)
+//Message buffer. This will be treated as ring memory
+char msg[MESSAGE_LENGTH];
+byte msgIndex = 0;
 
-The front legs I created using some rectangles and a spline. At the top you can see the aforementioned shoulderbone connection and at the bottom you can see connection joints for a set of stands that I decided to create for better standing. For the legs' thickness I used the regular bone thickness just in case of necessary adjustments:
+// Probing the button
+int buttonState = 0; 
 
-![View of the fron legs' 2D sketch](../img/lesson3/frontlegs.png)
 
-For stable standing I also created four standing plates for the feet to fit into. They are of 20mm radius with a slot in the middle of `(MaterialWidth+Kerf)&times;((BoneWidth/2)+Kerf)`. :
+void LEDOut(char mCode[4]){
 
-![Feet stand design](../img/lesson3/feetstands.png)
+  for(int i=0; (mCode[i] == '.' || mCode[i] == '-') && i<4 ;i++){
+    digitalWrite(ledPin, HIGH);
+    delay( (mCode[i] == '.')?pulseLen:3*pulseLen);
+    digitalWrite(ledPin, LOW);
+    delay(pulseLen);
+  } 
+}
 
-Designing the Legs turned out to be a mostly non-parametric procedure, as the complex shape only served aesthetics, aside from a few necessary joints.
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(ledPin, OUTPUT);
+  // Pullup for actuation precision
+  pinMode(buttonPin, INPUT_PULLUP);
+  //Initialise serial. 9600 Baud just to be safe
+  Serial.begin(9600);
+}
 
-![Designing the hindlegs from the torso](../img/lesson3/hindleg_measurements.png)
+void loop() {
+  buttonState = digitalRead(buttonPin);
 
-Below you can see the hip bone, which has been used to connect the two hindleg pieces to the main torso:
+  while(Serial.available() > 0){
+    char c_tmp =Serial.read();
 
-![Designing the hip bone](../img/lesson3/hipbone.png)
+    //Probe current message state
+    if(c_tmp == '?'){
+      Serial.print("Echo: ");
+      for(int i=0; msg[i] >= ' ' && i<MESSAGE_LENGTH; i++){
+        Serial.print(msg[i]);
+      }
+      Serial.print('\n');
+    }
+    
+    //Discard anything that isn't A-Z or SPACE
+    if( (c_tmp >= 'A' && c_tmp <= 'Z') ||c_tmp == ' '){
+      msg[msgIndex] = c_tmp;
+      msgIndex = (msgIndex+1)%MESSAGE_LENGTH;
+    }
+    msg[msgIndex] = '\0';
+  }
 
-### The tail
+  
+  
+  // Button LED switch. As the button is LOW-Active, it is probed against LOW
+  if (buttonState == LOW) {
 
-For the tail I designed a tail bone (visible at the bottom of the image below) which would stick perpendicular into the fox' back with circles of 3 sizes stuck onto it, suggesting volume.
-
-The gaps have been defined through a rectangular pattern on the bone and snapping with defined distance between the circle's midpoint and one of the gap's corners for centering in case of the "bushes". The gaps' size has been defined using standard proportions (MaterialWidth, Kerf and BoneWidth/2:
-
-![Tail components](../img/lesson3/tail.png)
-
-### Final sketch
-
-![Final design](../img/lesson3/fox_final.png)
-
-## Printing the piece
-   
-### Preparation in Cura
-
-Generally there was little issue regarding overhang and support. *Generally*. More on that later. As for settings, I used the standard settings for generic PLA material using an Ultimaker S5 printer. Deviances are listed in the table below:
-
-|Variable|Value|
-|--|--|
-|Layer height| 0.2mm|
-|Wall line count| 8|
-|Top layers| 2|
-|Infill density| 100%|
-|Infill pattern| Tri-Hexagon|
-|Build plate adhesion type| Skirt|
-
-![Loose test cut](../img/lesson3/testcut.jpg)
-
-Even worse was that my design has grown so complex over time that turning the kerf into a negative value for the final version wasn't possible due to calculation issues, something that could've been an easy fix.
-
-### Final result
-
-After the final piece was finished, it looked a bit fragile, but turned out quite sturdy, likely due to the 100% infill density. However, there seemed to be a printing failure on the overhang of one of the sides, which rendered the inner screwhole unusable:
-
-![Cutting job displayed on the laser cutter](../img/lesson3/jobtime.jpg)
-
-Testing the piece on the corner of a 3mm wooden plate, attachment was already sturdy and tight, such that the additional planned screw might not even be necessary in the final project. Just for added structural security, I'm still going to keep it though.
-
-![The half-assembled fox model featuring manufacturing errors](../img/lesson3/components.jpg)
-
-Following makeshift assembly using glue to fixate the joints, as well as doing some correctional cutting using a good old saw, you can see the final result below
-
-![Final assembly of the fox model](../img/lesson3/model_final.png)
+    //LED Morse loop
+    for(int i=0; msg[i] >= 'A' && i<MESSAGE_LENGTH; i++){
+        switch(msg[i]){
+          case 'A':{
+            LEDOut(".-");
+            break;
+          }
+          case 'B':{
+            LEDOut("-...");
+            break;
+          }
+          case 'C':{
+            LEDOut("-.-.");
+            break;
+          }
+          case 'D':{
+            LEDOut("-..");
+            break;
+          }
+          case 'E':{
+            LEDOut(".");
+            break;
+          }
+          case 'F':{
+            LEDOut("..-.");
+            break;
+          }
+          case 'G':{
+            LEDOut("--.");
+            break;
+          }
+          case 'H':{
+            LEDOut("....");
+            break;
+          }
+          case 'I':{
+            LEDOut("..");
+            break;
+          }
+          case 'J':{
+            LEDOut(".---");
+            break;
+          }
+          case 'K':{
+            LEDOut("-.-");
+            break;
+          }
+          case 'L':{
+            LEDOut(".-..");
+            break;
+          }
+          case 'M':{
+            LEDOut("--");
+            break;
+          }
+          case 'N':{
+            LEDOut("-.");
+            break;
+          }
+          case 'O':{
+            LEDOut("---");
+            break;
+          }
+          case 'P':{
+            LEDOut(".--.");
+            break;
+          }
+          case 'Q':{
+            LEDOut("--.-");
+            break;
+          }
+          case 'R':{
+            LEDOut(".-.");
+            break;
+          }
+          case 'S':{
+            LEDOut("...");
+            break;
+          }
+          case 'T':{
+            LEDOut("-");
+            break;
+          }
+          case 'U':{
+            LEDOut("..-");
+            break;
+          }
+          case 'V':{
+            LEDOut("...-");
+            break;
+          }
+          case 'W':{
+            LEDOut(".--");
+            break;
+          }
+          case 'X':{
+            LEDOut("-..-");
+            break;
+          }
+          case 'Y':{
+            LEDOut("-.--");
+            break;
+          }
+          case 'Z':{
+            LEDOut("--..");
+            break;
+          }
+          default: break;
+        }
+    }
+    
+    // Reset LED and Buffer
+    digitalWrite(ledPin, LOW);
+    msgIndex = 0;
+    msg[0] = '\0';
+  }
+  
+}
+```
