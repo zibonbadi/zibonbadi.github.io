@@ -24,7 +24,7 @@ For this excercise I've been supplied with the following hardware:
 
 I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
 
-For this project I wired up a button to pin 1 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I'd be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:
+For this project I wired up a button to pin D2 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I'd be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:
 
 ![Wiring for the morse code emitter](../img/lesson5/morsecode_wires.jpg)
 

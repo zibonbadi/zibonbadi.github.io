@@ -10,9 +10,9 @@ This time we're diving into the basics of parametric CAD design and laser cuttin
 
 Once again I decided to design the corner joint in Fusion 360. Below you can see a sketch of the top view, which I extruded as a base to work with:
 
-![Coming soon](../img/lesson4/cornerpiece_topsketch.png)
+![The base sketch for the corner piece](../img/lesson4/cornerpiece_topsketch.png)
 
-![Coming soon](../img/lesson4/cornerpiece_extrusions.png)
+![The corner piece in three-dimensional view, showing some extrusions](../img/lesson4/cornerpiece_extrusions.png)
 
 The Fusion 360 project file[^cornerproject] is available for download.
 
