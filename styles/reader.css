@@ -1,5 +1,7 @@
 @import "core.css";
-
+html{ background: var(--background-table);
+		background-attachment: fixed;
+}
 nav > a{
 		  min-width: 11mm;
 		  min-height: 11mm;
@@ -15,7 +17,7 @@ nav > a{
 		  box-shadow: 0px 1mm 3mm rgba(0,0,0,0.5);
 		  border: 1pt solid var(--color-main-bg);
 }
-iframe{
+embed{
 		  border: none;
 		  width: auto;
 		  height: auto;
@@ -39,7 +41,7 @@ nav {
 					 flex-direction: column;
 		  }
 		  nav > a{ height: 100% }
-		  iframe{
+		  embed{
 					 width: calc(100vw - 1cm);
 					 height: calc(100vh - 3cm);
 		  }
@@ -47,16 +49,17 @@ nav {
 @media(min-width:60rem){
 		  nav{
 					 float: left;
-					 flex-direction: row;
+					 flex-direction: column;
 					 max-width: 20ex;
 					 height: calc(100vh - 1cm);
 					 margin: 2mm auto;
 		  }
 		  nav > a{
-					 width: 100%;
+					 min-width: 75%;
+					 width: min-content;
 					 height: min-content;
 		  }
-		  iframe{
+		  embed{
 					 float: right;
 					 width: calc(100vw - 30ex);
 					 height: calc(100vh - 1cm);
