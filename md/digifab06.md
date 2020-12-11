@@ -12,6 +12,8 @@ As a refactoring measure to save on memory, I also decided to relabel all of my 
 
 Last thing to mention was wiring up the potentiometer to the board. This was fairly simple. The middle pin transmits the signal, which I mapped to A0. On this model the right pin (pins facing you) was +5V and the left one was GND. I wired them accordingly to the ports above the analog inputs.
 
+As always, the source code is available for download[^dlsrc].
+
 ## Updated Morse code emitter source code.
 
 ```C
