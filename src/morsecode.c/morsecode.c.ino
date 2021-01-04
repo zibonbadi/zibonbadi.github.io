@@ -1,12 +1,15 @@
 //Some constants for defining arbitrary things
+const int PULSELEN_MIN = 50;
+const int PULSELEN_MAX = 200;
 const int MESSAGE_LENGTH = 64;
 const int buttonPin = 2;     // the number of the pushbutton pin
+const int potiPin = 0;     // the number of the pushbutton pin
 const int ledPin =  LED_BUILTIN;      // the number of the LED pin
-const int pulseLen = 50;
 
 //Message buffer. This will be treated as ring memory
 char msg[MESSAGE_LENGTH];
 byte msgIndex = 0;
+int pulseLen = PULSELEN_MIN;
 
 // Probing the button
 int buttonState = 0; 
@@ -33,6 +36,7 @@ void setup() {
 
 void loop() {
   buttonState = digitalRead(buttonPin);
+  pulseLen = map(analogRead(potiPin),0,1023,PULSELEN_MIN,PULSELEN_MAX);
 
   while(Serial.available() > 0){
     char c_tmp =Serial.read();

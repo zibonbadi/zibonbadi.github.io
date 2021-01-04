@@ -1,12 +1,13 @@
 % Parametric design and Laser cutting
 
 [^cadsketch]: [Download link for the fox model sketch](../download/foxfigure.dxf)
+[^fusionfile]: [Download link for the fox model sketch](../download/foxcut.f3d)
 
 This time we're diving into the basics of parametric CAD design and laser cutting. The parametric design will be a foundational sketch for a small laser cut model made of wood. This model will also feature engravings as both excercise and visual effect.
 
 ## Parametric Design
 
-For this excercise I decided to create a simple geometric model of a fox, which will be "textured" using different engravings. The final result can be found here[^cadsketch].
+For this excercise I decided to create a simple geometric model of a fox, which will be "textured" using different engravings. The final result can be found here[^fusionfile].
 
 Due to it's three-dimensional, joint-based approach our model will be fairly complex, thus I will try to simplify explaining some of the components' designs as the main focus lies on how parametric design automates and structures it. Just as a primer, you can see the final spreadsheet down below:
 
@@ -67,6 +68,8 @@ The gaps have been defined through a rectangular pattern on the bone and snappin
 ![Tail components](../img/lesson3/tail.png)
 
 ### Final sketch
+
+Below you can see the final sketch, which I exported into the industry-standard (non-parametric) Autodesk DXF format for use in Rhinoceros (the laser cutting system used in this excercise). The DXF export is also available for download[^cadsketch]:
 
 ![Final design](../img/lesson3/fox_final.png)
 

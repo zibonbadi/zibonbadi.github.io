@@ -1,6 +1,7 @@
 % Analog input on the Aruino
 
 [^dlsrc]: [Updated morse code transmitter source code](../src/morsecode_analog.c)
+[^dlvid]: [Testing the morse code emitter](../download/transmitter.webm)
 
 ## Updating the morse code emitter
 
@@ -10,9 +11,16 @@ The change was fairly simple: I added 2 more constants for defining a delay wind
 
 As a refactoring measure to save on memory, I also decided to relabel all of my constants, except the message buffer size into `#define`s.
 
-Last thing to mention was wiring up the potentiometer to the board. This was fairly simple. The middle pin transmits the signal, which I mapped to A0. On this model the right pin (pins facing you) was +5V and the left one was GND. I wired them accordingly to the ports above the analog inputs.
+Last thing to mention was wiring up the potentiometer to the board. This was fairly simple. The middle pin transmits the signal, which I wired to A0. On this model the right pin (pins facing you) was +5V and the left one was GND, however as long as the middle pin is wired to the Arduino's analog input and naturally voltage/currents are acceptable, it shouldn't matter too much which way you wire it.
 
-As always, the source code is available for download[^dlsrc].
+Lastly, just like last week, I wired the Button to digital pin 2 accordingly to the ports above the analog inputs.
+
+As always, the source code is available for download[^dlsrc] and below you can see a video of the working (updated) mose code emitter, which is availavle for download as well[^dlvid]:
+
+<video>
+<source src="../download/transmitter.webm" type="video/webm">
+Your browser does not support video playback. [Download it instead.](../download/transmitter.webm).
+</video>
 
 ## Updated Morse code emitter source code.
 

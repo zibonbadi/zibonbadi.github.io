@@ -1,6 +1,12 @@
 % Microcontroller programming using Arduino
 
-[^dlsrc]: [Morse code transmitter source code](../src/morsecode.c)
+[^dlsrc]: [Morse code transmitter source code](../src/morsecode.c/morsecode.ino)
+
+## Introduction
+
+For this week, I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
+
+As usual, all software resources (as in the *one* source file) are available for download [^dlsrc] and a video of the slightly extended version can be found [in the next week's project documentation](../html/digifab06.html).
 
 ## Setting up the Arduino
 
@@ -11,8 +17,11 @@ For this excercise I've been supplied with the following hardware:
 |Arduino Uno A7| 1|
 |Breadboard| 1|
 |USB cable type A &rarr; type C| 1|
-|Resistor &omega;| several|
+|Resistor 10k&omega;| 3|
 |Ultrasonic sensor| 1|
+|Humidity sensor| 1|
+|Motion sensor| 1|
+|Presence sensor| 1|
 |Beeper| 1|
 |Controllable LED light| 1|
 |Potentiometer| 1|
@@ -21,8 +30,6 @@ For this excercise I've been supplied with the following hardware:
 |2 cable band; double male| 1|
 |2 cable band; male/female| 2|
 |Button| 1|
-
-I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
 
 For this project I wired up a button to pin D2 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I'd be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:
 

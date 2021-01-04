@@ -31,6 +31,8 @@ Generally there was little issue regarding overhang and support. *Generally*. Mo
 |Infill pattern| Tri-Hexagon|
 |Build plate adhesion type| Skirt|
 
+To some readers these values might not have much meaning, so I'll explain some of them shortly: I used a Layer height of 0.2mm to control the calculated kerf from the 3D CAD model such that the final print will be close to how it was designed in software. Furthermore I used a wall layer count of 8 with an infill density of 100% and a Tri-hexagon infill pattern to increase the print's stability/sturdiness (as mathematically speaking triangles and hexagons have some of the most equal distributions of force for any wire/grid structure). Lastly I added a skirt adhesion to the build plate, just to be able to safely remove the piece once it has finished printing without risking damage.
+
 ![Printed piece inside of an Ultimaker S5 printer](../img/lesson4/ultimaker.jpg)
 
 Once again, the exported STL model[^stlmodel] and finished gCode file[^gcode] are available for download.

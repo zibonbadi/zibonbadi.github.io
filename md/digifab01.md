@@ -35,7 +35,7 @@ The flags `--toc` and `--toc-depth 3` include an auto-generated table of content
 
 Make's concept is fairly simple: Make checks a so-called *Makefile* for predefined rules regarding certain files. Should a createable file not exist or be updated compared to files that depend on it, Make will execute predefined commands to recreate all necessary files.
 
-Given everything mentioned above, below you can see the contents the Makefile used to create individual project documentations:
+Given everything mentioned above, below you can see the contents of the Makefile used to create individual project documentations:
 
 ```Make
 format_in := md
@@ -91,7 +91,7 @@ After you're done with your changes, you need to add them to the change history 
 git commit -m "Whatever changes I made"
 ```
 
-Lastly, you need to . One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches *main* rather than *master*.
+Lastly, you need to "push" your updates to the remote server, as git is based on "clones", meaning local copies of the source tree. One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches *main* rather than *master*.
 
 ```Bash
 git push origin main
