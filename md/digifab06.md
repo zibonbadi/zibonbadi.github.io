@@ -1,7 +1,7 @@
 % Analog input on the Aruino
 
-[^dlsrc]: [Updated morse code transmitter source code](../src/morsecode_analog.c)
-[^dlvid]: [Testing the morse code emitter](../download/transmitter.webm)
+[^dlsrc]: [Updated morse code transmitter source code](../src/morsecode_analog.c/morsecode_analog.c.ino)
+[^dlvid]: [Video of me showcasing the morse code emitter](../download/transmitter.webm)
 
 ## Updating the morse code emitter
 
@@ -17,10 +17,7 @@ Lastly, just like last week, I wired the Button to digital pin 2 accordingly to 
 
 As always, the source code is available for download[^dlsrc] and below you can see a video of the working (updated) mose code emitter, which is availavle for download as well[^dlvid]:
 
-<video>
-<source src="../download/transmitter.webm" type="video/webm">
-Your browser does not support video playback. [Download it instead.](../download/transmitter.webm).
-</video>
+![Your browser does not support video playback. Download it instead.[^dlvid]](../download/transmitter.webm)
 
 ## Updated Morse code emitter source code.
 

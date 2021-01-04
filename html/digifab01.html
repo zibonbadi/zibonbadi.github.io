@@ -102,7 +102,7 @@
 <h3 id="make">Make</h3>
 <p><a href="https://www.gnu.org/software/make/">GNU Make</a> is a libre implementation of Make, a system originally developed for the BSD operating system to automate the creation of programs, especially those written in C.</p>
 <p>Make’s concept is fairly simple: Make checks a so-called <em>Makefile</em> for predefined rules regarding certain files. Should a createable file not exist or be updated compared to files that depend on it, Make will execute predefined commands to recreate all necessary files.</p>
-<p>Given everything mentioned above, below you can see the contents the Makefile used to create individual project documentations:</p>
+<p>Given everything mentioned above, below you can see the contents of the Makefile used to create individual project documentations:</p>
 <pre class="make"><code>format_in := md
 format_out := html
 
@@ -141,7 +141,7 @@ $(format_out)/%.$(format_out): $(format_in)/%.$(format_in) | $(format_out)
 <p>For people unfamiliar with Git, after cloning you might want to update your repository using <code>git pull</code>.</p>
 <p>After you’re done with your changes, you need to add them to the change history using <code>git add .</code> and file a commit. Usually I use the following command:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit -m <span class="st">&quot;Whatever changes I made&quot;</span></span></code></pre></div>
-<p>Lastly, you need to . One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches <em>main</em> rather than <em>master</em>.</p>
+<p>Lastly, you need to “push” your updates to the remote server, as git is based on “clones”, meaning local copies of the source tree. One important thing to note here is that GitHub - unlike many other git repositories - prefers to call their root branches <em>main</em> rather than <em>master</em>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div>
 <h3 id="github">GitHub</h3>
 <p>GitHub allows for easy hosting of custom websites for documentation purposes. All that is needed is to create a repository called <code>username.github.io</code> with an <em>index.html</em> file and it will be publicly viewable on <em>username.github.io</em></p>

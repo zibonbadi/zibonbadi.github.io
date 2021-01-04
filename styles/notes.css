@@ -138,7 +138,7 @@ pre{
 
 @media screen {
 	html{
-		background: transparent;
+		background: #2221;
 	}
 	nav li > ul {
 		transform: scale(0, 0);
@@ -201,7 +201,7 @@ pre{
 		border:	1px solid var(--color-main-text-print);
 	}
 	figcaption{	font-size:	0.8em;	}
-	figure > img{	width:100%;	}	
+	figure > img, figure > video{	width:100%;	}	
 	:not(pre) > code{
 		background-color: var(--base2);
 		color:	var(--base02);

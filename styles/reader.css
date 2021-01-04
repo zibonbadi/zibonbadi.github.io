@@ -51,8 +51,9 @@ nav {
 					 float: left;
 					 flex-direction: column;
 					 max-width: 20ex;
-					 height: calc(100vh - 1cm);
+					 height: calc(99vh - 1cm);
 					 margin: 2mm auto;
+					 border: 2pt solid var(--color-table-border);
 		  }
 		  nav > a{
 					 min-width: 75%;

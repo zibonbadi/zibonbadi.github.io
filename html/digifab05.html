@@ -69,10 +69,14 @@
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#setting-up-the-arduino">Setting up the Arduino</a></li>
 <li><a href="#programming">Programming</a></li>
 </ul>
 </nav>
+<h2 id="introduction">Introduction</h2>
+<p>For this week, I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.</p>
+<p>As usual, all software resources (as in the <em>one</em> source file) are available for download <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and a video of the slightly extended version can be found <a href="../html/digifab06.html">in the next week’s project documentation</a>.</p>
 <h2 id="setting-up-the-arduino">Setting up the Arduino</h2>
 <p>For this excercise I’ve been supplied with the following hardware:</p>
 <table>
@@ -96,48 +100,59 @@
 <td>1</td>
 </tr>
 <tr class="even">
-<td>Resistor ω</td>
-<td>several</td>
+<td>Resistor 10kω</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td>Ultrasonic sensor</td>
 <td>1</td>
 </tr>
 <tr class="even">
+<td>Humidity sensor</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Motion sensor</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Presence sensor</td>
+<td>1</td>
+</tr>
+<tr class="odd">
 <td>Beeper</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Controllable LED light</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Potentiometer</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Cable; double male</td>
 <td>several</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>5 cable band; double female</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2 cable band; double male</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>2 cable band; male/female</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Button</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
-<p>I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.</p>
 <p>For this project I wired up a button to pin D2 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I’d be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:</p>
 <figure>
 <img src="../img/lesson5/morsecode_wires.jpg" alt="Wiring for the morse code emitter" /><figcaption aria-hidden="true">Wiring for the morse code emitter</figcaption>
@@ -152,7 +167,7 @@
 <figure>
 <img src="../img/lesson5/morsecode_serial.png" alt="Serial IO for the morse code emitter program" /><figcaption aria-hidden="true">Serial IO for the morse code emitter program</figcaption>
 </figure>
-<p>Below you can find the entire program’s source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Below you can find the entire program’s source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Some constants for defining arbitrary things</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> MESSAGE_LENGTH = <span class="dv">64</span>;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> buttonPin = <span class="dv">2</span>;     <span class="co">// the number of the pushbutton pin</span></span>
@@ -335,7 +350,8 @@
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p><a href="../src/morsecode.c">Morse code transmitter source code</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p><a href="../src/morsecode.c/morsecode.ino">Morse code transmitter source code</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="../src/morsecode.c/morsecode.ino">Morse code transmitter source code</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
