@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Final Project: Creating a Mini PC case</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../styles/notes.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Final Project: Creating a Mini PC case</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#inspiration">Inspiration</a></li>
+<li><a href="#design-goals-and-parts-list">Design goals and parts list</a></li>
+<li><a href="#laser-cutting">Laser cutting</a></li>
+<li><a href="#d-printing">3D printing</a></li>
+<li><a href="#electronics-wiring">Electronics wiring</a></li>
+<li><a href="#microcontroller-programming">Microcontroller programming</a></li>
+</ul>
+</nav>
+<h2 id="inspiration">Inspiration</h2>
+<p>Alright, this is it. The final project. Countless possibilities when you can control everything from physical construction over electronics to microcontroller programming. But what do?</p>
+<p>When I started this course, I did so with the intention of passing it having gained not only knowledge, but also a physical object which I could use on a day-to-day basis.</p>
+<p>I previously mentioned being a proud Linux user, a system that to this day gained a dedicated, but niche following among desktop computer users, mainly through word of mouth. Because of this, there are many reasons someone might “get into” Linux in the first place.</p>
+<p>For me this reason was preserving old technology. As me and my family never had a lot of spare cash, I’ve learned to cherish any piece of precious (expensive) technology I manage to get hold of and use it until it’s absolutely not possible anymore, then fix it, then use it again, 20 GOTO 10. However, when I first installed Manjaro on my laptop I encountered two problems which Linux wasn’t able to fix. Overheating (which can be mitigated, thanks to <code>thermald</code> and I haven’t had a thermal shutdown since ;p) and a case which was slowly falling apart.</p>
+<p>Thus I decided to finally address these problems myself by building a custom case which warned me of overheating during runtime and allowed me to easily work on my laptop’s old mainboard if needed.</p>
+<h2 id="design-goals-and-parts-list">Design goals and parts list</h2>
+<p>The case I am trying to build will have to meet certain criteria, both for passing the course as well as for my own personal use case:</p>
+<ul>
+<li>The case requires fitting the following components inside - Mainboard - Power button - Audio/SD I/O PCB - Activity light PCB</li>
+<li>The optical drive is optional but “nice to have”</li>
+<li>A custom backplate suited towards the laptop’s I/O</li>
+<li>A feet-based “floating” design to increase airflow at the bottom and reduce overheating</li>
+<li>Strict separation between the case’s electronics and the laptop’s components</li>
+<li>An easy way to remove the laptop’s PCB and service it without taking apart the entire case</li>
+<li>Ambient lighting at the bottom of the case to indicate activity in an aesthetically thought-out way.</li>
+<li>A heat sensor for measuring the CPU temperature</li>
+<li>A way to display the measured CPU temperature</li>
+<li>A microcontroller for interfacing between the above mentioned components</li>
+</ul>
+<p>The final parts required to build this case ended up being the following:</p>
+<ul>
+<li>My Laptop. Duh.</li>
+<li>3mm wood for the laser-cut</li>
+<li>A roll of PLA for 3D-printing the stabilizing corner pieces</li>
+<li>2mm screws</li>
+<li>2mm-compatible feet</li>
+<li>Cables and solder for connecting the electronics</li>
+<li>An Arduino Uno. I used a selfbuilt clone in the final case, but tested on an official one.</li>
+<li>An MLX90614ESF infrared temperature sensor</li>
+<li>A WS2812B-based programmable LED strip</li>
+<li>A 1602A-compatible LCD character display</li>
+<li>A Potentiometer and Button for controlling the LCD display’s properties (contrast, backlight)</li>
+<li>An LCD display for displaying the measured CPU temperature</li>
+</ul>
+<h2 id="laser-cutting">Laser cutting</h2>
+<h2 id="d-printing">3D printing</h2>
+<h2 id="electronics-wiring">Electronics wiring</h2>
+<p>As almost everything electronic is gonna be driven by the Arduino Uno, here’s a table with how to wire it up. Additional wirings are written below in text form:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Arduino pin</th>
+<th>Component pin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+5V</td>
+<td>1602A VSS; 1602A A (over resistor); Potentiometer &lt;++&gt;</td>
+</tr>
+<tr class="even">
+<td>GND</td>
+<td>1602A VDD; 1602A RW; 1602A K; Potentiometer; MLX90614ESF GND</td>
+</tr>
+<tr class="odd">
+<td>+3.3V</td>
+<td>MLX90614ESF VIN</td>
+</tr>
+<tr class="even">
+<td>A4</td>
+<td>MLX90614ESF SDA</td>
+</tr>
+<tr class="odd">
+<td>A5</td>
+<td>MLX90614ESF SCL</td>
+</tr>
+<tr class="even">
+<td>Digital 2</td>
+<td>1602A D7</td>
+</tr>
+<tr class="odd">
+<td>Digital 3</td>
+<td>1602A D6</td>
+</tr>
+<tr class="even">
+<td>Digital 4</td>
+<td>1602A D5</td>
+</tr>
+<tr class="odd">
+<td>Digital 5</td>
+<td>1602A D4</td>
+</tr>
+<tr class="even">
+<td>Digital 7</td>
+<td>WS2812B (over resistor)</td>
+</tr>
+<tr class="odd">
+<td>Digital 11</td>
+<td>1602A E</td>
+</tr>
+<tr class="even">
+<td>Digital 12</td>
+<td>1602A RS</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally I wired the potentiometer’s output pin to the 1602A’s VO (contrast) pin.</p>
+<h2 id="microcontroller-programming">Microcontroller programming</h2>
+</body>
+</html>

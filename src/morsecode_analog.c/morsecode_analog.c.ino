@@ -2,7 +2,7 @@
 #define PULSELEN_MIN 50
 #define PULSELEN_MAX 200
 #define PIN_BUTTON 2     // the number of the pushbutton pin
-#define PIN_POT A0     // the number of the pushbutton pin
+#define PIN_POT A0     // the number of the potentiometer input pin
 #define PIN_LED LED_BUILTIN      // the number of the LED pin
 const int MESSAGE_LENGTH = 64;
 
@@ -16,6 +16,8 @@ int buttonState = 0;
 
 
 void LEDOut(char mCode[4]){
+
+	//Helper function to translalte morse code into blink patterns. '.' is a short and '-' a long pulse (3x length of short pulse)
 
   for(int i=0; (mCode[i] == '.' || mCode[i] == '-') && i<4 ;i++){
     digitalWrite(PIN_LED, HIGH);
@@ -35,15 +37,19 @@ void setup() {
 }
 
 void loop() {
+	//Probe button for message trigger
   buttonState = digitalRead(PIN_BUTTON);
+	//Determine pulse length. This is basically the inverse of a baud speed and will be used in the output's delay() function
   pulseLen = map(analogRead(PIN_POT),0,1023,PULSELEN_MIN,PULSELEN_MAX);
 
+	//Check for available characters over serial
   while(Serial.available() > 0){
     char c_tmp =Serial.read();
 
-    //Probe current message state
+    //Probe current message state by entering '?' into serial
     if(c_tmp == '?'){
       Serial.print("Echo: ");
+		//When a control character is recognized, text entry is aborted. NUL/'\0' is used for marking a premature end of input
       for(int i=0; msg[i] >= ' ' && i<MESSAGE_LENGTH; i++){
         Serial.print(msg[i]);
       }
@@ -51,10 +57,11 @@ void loop() {
     }
     
     //Discard anything that isn't A-Z or SPACE
-    if( (c_tmp >= 'A' && c_tmp <= 'Z') ||c_tmp == ' '){
+    if( (c_tmp >= 'A' && c_tmp <= 'Z') || c_tmp == ' '){
       msg[msgIndex] = c_tmp;
       msgIndex = (msgIndex+1)%MESSAGE_LENGTH;
     }
+		  //Mark new end of line
     msg[msgIndex] = '\0';
   }
 
@@ -63,7 +70,10 @@ void loop() {
   // Button LED switch. As the button is LOW-Active, it is probed against LOW
   if (buttonState == LOW) {
 
-    //LED Morse loop
+    /*
+		  LED Morse loop. Basically parses the characters into blink patterns using the LEDOut() function
+		  Flushes the entire message buffer into output at a constant baud rate
+	*/
     for(int i=0; msg[i] >= 'A' && i<MESSAGE_LENGTH; i++){
         switch(msg[i]){
           case 'A':{
