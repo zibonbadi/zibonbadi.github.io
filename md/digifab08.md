@@ -12,7 +12,20 @@ However, for production environments you'd usually try to get everything printed
 
 The final schematic ended up quite simple, so I think I can explain it entirely using the image below:
 
-![The final PCB schematic](../img/lesson8/schematic.png)
+![The first PCB schematic](../img/lesson8/schematic.png)
+
+These labels you see are called *XRefs*. they are a feature of EAGLE which allows you to logically wire together multiple connections without visually representing then, reducing clutter.
+
+Anyway, first I set the obligatory VCC and GND connections as well as wire a 1uF capacitor into it to keep. You can see those in the top left corner.
+
+Below you can find an AVRISPSMD, which is an input plug through which the ATTINY44 can be accessed. I wired all ports according to their appropriate connections to the ATTINY44. More on that later.
+
+As the ATTINY44-SSU's reset is triggered on PB3 being closed LOW, I connected a pullup VCC connection as well as a reset connector, such that it only gets reset on user input.
+
+I also wired in an LED into PB0 to serve as an Arduino pin 13-esque debug light for programmers. All other pins were either wired according to the AVRISPSMD plug or smiply wired into an output array (MO6).
+
+- **MOSI/MISO:** Master In/Out Slave In/Out. These pins are for serial communication.
+- **SCK**: Serial clock
 
 ## Designing the traces
 
@@ -24,6 +37,6 @@ Sadly as the atmil was not precise enough, I ended up not being able to connect 
 
 After a while I decided to use a Polygon to automatically fill in all necessary GND connections and split the accessible connections into PA0-3 and PA7/PB2 and following lots of trial and error, here's the final result
 
-![The final schematic design. Notice the use of two output arrays on the right](../img/lesson8/schematic.png)
+![The final schematic design. Notice the use of two output arrays on the right](../img/lesson8/schematic_final.png)
 
-![The final PCB trace design](../img/lesson8/pcb.png)
+![The final PCB trace design](../img/lesson8/pcb_final.png)
