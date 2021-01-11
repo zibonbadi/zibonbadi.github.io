@@ -21,3 +21,9 @@ For this exercise we settle on a machine that is capable of creating traces of a
 ![The PCB trace design](../img/lesson8/pcb.png)
 
 Sadly as the atmil was not precise enough, I ended up not being able to connect the output pins PA7 and PB2 (loose traces in the middle), as there is logically no safe way to connect these without the use of a 2nd layer.
+
+After a while I decided to use a Polygon to automatically fill in all necessary GND connections and split the accessible connections into PA0-3 and PA7/PB2 and following lots of trial and error, here's the final result
+
+![The final schematic design. Notice the use of two output arrays on the right](../img/lesson8/schematic.png)
+
+![The final PCB trace design](../img/lesson8/pcb.png)
