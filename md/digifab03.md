@@ -25,7 +25,7 @@ Let's start off with something rather simple, then. Below you can see the fox' f
 
 ![The fox' face plate and ears.](../img/lesson3/foxface.png)
 
-As fox faces are not flat of course, below you can see the snout, which has been designed with a size of
+As fox faces are not flat of course, below you can see the snout, which has been designed with a length of about 7cm in mind.
 
 Below the ears we encounter the first of what I refer to as *bones*. These are little helper pieces which are supposed to serve complex joints between similarly orientated cuts, since the suspected 3mm wood we're about to use for assembly is unable to safely bend without use of complex patterns.
 
@@ -63,7 +63,7 @@ Below you can see the hip bone, which has been used to connect the two hindleg p
 
 For the tail I designed a tail bone (visible at the bottom of the image below) which would stick perpendicular into the fox' back with circles of 3 sizes stuck onto it, suggesting volume.
 
-The gaps have been defined through a rectangular pattern on the bone and snapping with defined distance between the circle's midpoint and one of the gap's corners for centering in case of the "bushes". The gaps' size has been defined using standard proportions (MaterialWidth, Kerf and BoneWidth/2:
+The gaps have been defined through a rectangular pattern on the bone and snapping with defined distance between the circle's midpoint and one of the gap's corners for centering in case of the "bushes". The gaps' size has been defined using standard proportions (MaterialWidth, Kerf and BoneWidth/2):
 
 ![Tail components](../img/lesson3/tail.png)
 
@@ -81,7 +81,7 @@ However, after doing a test cut, I started to notice a problem with the Kerf:
 
 The *Kerf* is a measurement that is used to describe the amount of material a cutter removes from the used resource in order to cut it.
 
-Although my estimate of 0.2mm Kerf wasreasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.
+Although my estimate of 0.2mm Kerf was reasonable, I accidentally applied it to to increase the width of the joint holes, resulting in a loose cut that could easily fall apart.
 
 ![Loose test cut](../img/lesson3/testcut.jpg)
 
@@ -99,7 +99,7 @@ After defining all necessary parameters in Rhinoceros (parameters listed below),
 
 ![Cutting job displayed on the laser cutter](../img/lesson3/jobtime.jpg)
 
-In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail's bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces' length in order to center them. Lastly, the pelvis bone was measured to shortly such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:
+In the image below you can also see some oversights on my part: First, one leg is missing the nub necessary to join it to one of the circular foot pieces. The tail's bush pieces were also mistakenly measured according to the bone width, while the desired effect required measurement of half the pieces' length in order to center them. Lastly, the pelvis bone was measured too short such that the hindlegs cannot be fit onto them. Some components of the model, as well as the test cut (white) can be seen below:
 
 ![The half-assembled fox model featuring manufacturing errors](../img/lesson3/components.jpg)
 
