@@ -1,8 +1,8 @@
 % Electronics design
 
 [^dlpcb]: [PCB design download](../download/fabpcb.zip)
-[^fab]: [FAB library](../download/fabpcb.zip)
-[^fabhello]: [FAB_hello library](../download/fabpcb.zip)
+[^fab]: [FAB library](../download/fab.lbr)
+[^fabhello]: [FAB_hello library](../download/FAB_hello.lbr)
 
 ## Introduction
 
