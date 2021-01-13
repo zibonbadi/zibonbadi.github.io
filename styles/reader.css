@@ -50,10 +50,12 @@ nav {
 		  nav{
 					 float: left;
 					 flex-direction: column;
-					 max-width: 20ex;
+					 width: 100%;
 					 height: calc(99vh - 1cm);
 					 margin: 2mm auto;
 					 border: 2pt solid var(--color-table-border);
+					 grid-column-start: 1;
+					 grid-column-end: 1;
 		  }
 		  nav > a{
 					 min-width: 75%;
@@ -62,7 +64,13 @@ nav {
 		  }
 		  embed{
 					 float: right;
-					 width: calc(100vw - 30ex);
+					 width: 100%;
 					 height: calc(100vh - 1cm);
+					 grid-column-start: 2;
+					 grid-column-end: span 10;
+		  }
+		  .gridcontainer{
+					 display: grid;
+					 grid-template-columns: minmax(20em,33vw) auto;
 		  }
 }

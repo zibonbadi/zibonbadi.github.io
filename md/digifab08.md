@@ -1,12 +1,24 @@
 % Electronics design
 
 [^dlpcb]: [PCB design download](../download/fabpcb.zip)
+[^fab]: [FAB library](../download/fabpcb.zip)
+[^fabhello]: [FAB_hello library](../download/fabpcb.zip)
 
 ## Introduction
 
 As the use of various electronic components, such as sensors, displays and lights within the final projects can result in a mess of wires and cable management, it is appropriate to simplify the circuitry using a custom designed PCB. This is especially useful, as the case's components are meant to be largely independent of the motherboard and power supply used inside of it and the reduction of cable management increases servicability and airflow.
 
+And of course, all project files are available for download[^dlpcb]
+
 However, for production environments you'd usually try to get everything printed onto the same board, such that everything is simplified towards your specific design goals without unnecessary excess. Because of this I will outline a process of designing a PCB around the Atmel ATTINY44 (which is a chip commonly used in Arduino controllers) using Autodesk EAGLE.
+
+## Setting up EAGLE
+
+Before we can start, we need to set up our environment. There are many PCB design tools out there both libre and commercial, but for the sake of simplicity I decided to go with Autodesk EAGLE, which unlike Fusion 360 is shipped in a feature-limited rather than time-limited trial version and also features native Linux support.
+
+Once EAGLE is installed and we created the first project, we need to import a few parts we need to use on our PCB. For this we need to open the library manager and add the necessary files for the FAB[^fab] and Fab_Hello[^fabhello] libraries respectively.
+
+![The library manager with fab libraries loaded in](../img/lesson8/libs.png)
 
 ## Designing the schematic
 

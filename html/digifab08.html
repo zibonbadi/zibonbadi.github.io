@@ -26,13 +26,21 @@
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
+<li><a href="#setting-up-eagle">Setting up EAGLE</a></li>
 <li><a href="#designing-the-schematic">Designing the schematic</a></li>
 <li><a href="#designing-the-traces">Designing the traces</a></li>
 </ul>
 </nav>
 <h2 id="introduction">Introduction</h2>
 <p>As the use of various electronic components, such as sensors, displays and lights within the final projects can result in a mess of wires and cable management, it is appropriate to simplify the circuitry using a custom designed PCB. This is especially useful, as the case’s components are meant to be largely independent of the motherboard and power supply used inside of it and the reduction of cable management increases servicability and airflow.</p>
+<p>And of course, all project files are available for download<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>However, for production environments you’d usually try to get everything printed onto the same board, such that everything is simplified towards your specific design goals without unnecessary excess. Because of this I will outline a process of designing a PCB around the Atmel ATTINY44 (which is a chip commonly used in Arduino controllers) using Autodesk EAGLE.</p>
+<h2 id="setting-up-eagle">Setting up EAGLE</h2>
+<p>Before we can start, we need to set up our environment. There are many PCB design tools out there both libre and commercial, but for the sake of simplicity I decided to go with Autodesk EAGLE, which unlike Fusion 360 is shipped in a feature-limited rather than time-limited trial version and also features native Linux support.</p>
+<p>Once EAGLE is installed and we created the first project, we need to import a few parts we need to use on our PCB. For this we need to open the library manager and add the necessary files for the FAB<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and Fab_Hello<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> libraries respectively.</p>
+<figure>
+<img src="../img/lesson8/libs.png" alt="The library manager with fab libraries loaded in" /><figcaption aria-hidden="true">The library manager with fab libraries loaded in</figcaption>
+</figure>
 <h2 id="designing-the-schematic">Designing the schematic</h2>
 <p>The final schematic ended up quite simple, so I think I can explain it entirely using the image below:</p>
 <figure>
@@ -60,5 +68,13 @@
 <figure>
 <img src="../img/lesson8/pcb_final.png" alt="The final PCB trace design" /><figcaption aria-hidden="true">The final PCB trace design</figcaption>
 </figure>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="../download/fabpcb.zip">PCB design download</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="../download/fabpcb.zip">FAB library</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="../download/fabpcb.zip">FAB_hello library</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 </body>
 </html>
