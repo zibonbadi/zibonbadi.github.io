@@ -1,12 +1,15 @@
 % Microcontroller programming using Arduino
 
-[^dlsrc]: [Morse code transmitter source code](../src/morsecode.c/morsecode.ino)
+[^dlsrc]: [Morse code transmitter source code](https://github.com/zibonbadi/zibonbadi.github.io/blob/main/src/morsecode.c/morsecode.c.ino)
+[^dlvid]: [Video of me showcasing the morse code emitter](../download/transmitter.webm)
 
 ## Introduction
 
 For this week, I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
 
 As usual, all software resources (as in the *one* source file) are available for download [^dlsrc] and a video of the slightly extended version can be found [in the next week's project documentation](../html/digifab06.html).
+
+![Video showing the morse code emitter over serial. If your browser does not support video playback, Download it instead.[^dlvid]](../download/transmitter.webm)
 
 ## Setting up the Arduino
 
