@@ -81,6 +81,11 @@
 <li><a href="#microcontroller-programming">Microcontroller programming</a></li>
 </ul>
 </nav>
+<p>This document will explain the creation of my final FabLab course project, a mini PC case featuring an old laptop motherboard with integrated electronics for measuring and displaying system temperature.</p>
+<figure>
+<video src="../download/pccasedemo.webm" controls=""><a href="../download/pccasedemo.webm">Showcase of the final PC case</a></video><figcaption aria-hidden="true">Showcase of the final PC case</figcaption>
+</figure>
+<p>All designs and components needed will be linked for download in their appropriate sections. For convenience, you can also get the direct references at the bottom of the document.</p>
 <h2 id="inspiration">Inspiration</h2>
 <figure>
 <video src="../img/final/docvid.webm" controls=""><a href="../img/final/docvid.webm">Showcase of the (semi) final case</a></video><figcaption aria-hidden="true">Showcase of the (semi) final case<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
@@ -94,11 +99,11 @@
 <h2 id="design-goals-and-parts-list">Design goals and parts list</h2>
 <p>The case I am trying to build will have to meet certain criteria, both for passing the course as well as for my own personal use case:</p>
 <ul>
-<li>The case requires fitting the following components inside - Mainboard - Power button - Audio/SD I/O PCB - Activity light PCB</li>
+<li>The case requires fitting the following components inside - Mainboard - Power button - Audio/SD I/O PCB - <del>Activity light PCB</del> The activity light is integrated into the trackpad PCB and thus not usable in this case, hence it won’t be used.</li>
 <li>The optical drive is optional but “nice to have”</li>
 <li>A custom backplate suited towards the laptop’s I/O</li>
 <li>A feet-based “floating” design to increase airflow at the bottom and reduce overheating</li>
-<li>Strict separation between the case’s electronics and the laptop’s components</li>
+<li>Strict separation between the case’s measurement electronics and the laptop’s components</li>
 <li>An easy way to remove the laptop’s PCB and service it without taking apart the entire case</li>
 <li>Ambient lighting at the bottom of the case to indicate activity in an aesthetically thought-out way.</li>
 <li>A heat sensor for measuring the CPU temperature</li>
@@ -110,9 +115,9 @@
 <li>My Laptop. Duh.</li>
 <li>3mm/8mm wood for the laser-cut</li>
 <li>A roll of PLA for 3D-printing the stabilizing corner pieces</li>
-<li>2mm screws</li>
-<li>2mm-compatible feet</li>
-<li>Cables and solder for connecting the electronics</li>
+<li>M3x16 case screws and M2.5 screws for the motherboard (as I am taking my laptop apart, it will supply these already)</li>
+<li>M3-compatible feet</li>
+<li>Cables solder and a Luster terminal for connecting the electronics</li>
 <li>An Arduino Uno. I used a selfbuilt clone in the final case, but tested on an official one.</li>
 <li>An MLX90614ESF infrared temperature sensor</li>
 <li>A WS2812B-based programmable LED strip</li>
@@ -374,17 +379,17 @@
 <hr />
 <ol>
 <li id="fn1" role="doc-endnote"><p><a href="../img/final/docvid.webm">Showcase video download</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><a href="../src/lcddisplay/lcddisplay.ino">Fusion 360 project</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p><a href="../dl/final/3mmr1.dxf">8mm sketch R1</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p><a href="../dl/final/3mmr1.dxf">3mm sketch R1</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p><a href="../dl/final/3mmr1.dxf">8mm sketch R2</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p><a href="../dl/final/3mmr1.dxf">3mm sketch R2</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p><a href="../dl/final/3plate.stl">3plate outer corner piece</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p><a href="../dl/final/corner2o_long.stl">corner2o_long outer corner piece</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p><a href="../dl/final/corner2i.stl">corner3i inner corner piece</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p><a href="../dl/final/corner3i.stl">corner3i inner corner piece</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p><a href="../dl/final/3to8_r.stl">3to8r custom piece</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p><a href="../dl/final/3to8_l.stl">3to8l custom piece</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="../download/final/pccases.f3d">Fusion 360 project</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="../download/final/8mmr1.dxf">8mm sketch R1</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="../download/final/3mmr1.dxf">3mm sketch R1</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a href="../download/final/8mmr2.dxf">8mm sketch R2</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a href="../download/final/3mmr2.dxf">3mm sketch R2</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="../download/final/3plate.stl">3plate outer corner piece</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p><a href="../download/final/corner2o_long.stl">corner2o_long outer corner piece</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><a href="../download/final/corner2i.stl">corner3i inner corner piece</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><a href="../download/final/corner3i.stl">corner3i inner corner piece</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a href="../download/final/3to8_r.stl">3to8r custom piece</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="../download/final/3to8_l.stl">3to8l custom piece</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13" role="doc-endnote"><p><a href="../src/lcdtemp/lcdtemp.ino">Arduino project</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
