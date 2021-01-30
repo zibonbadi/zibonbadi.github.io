@@ -10,8 +10,8 @@ As it is gonna be useful for diagnostic information in my final PC case project,
 
 The 1602A features 16 pins of which the first 6 are meant to control the display itself:
 
-1. VCC
-2. GND
+1. GND
+2. VCC
 3. Vo/Analog LCD contrast
 4. RS (Register Select): Control whether to send commands (e.g. cursor control, custom character overwrites) or data (characters, pixel bytes). This is wired to pin 12 on the Arduino.
 5. Read/Write mode: Apparently the 1602 is able to transmit the character it managed to display currently back. As this display is mainly meant as an output device though, I simply wired it to GND, eternally putting it in LOW/output mode.
