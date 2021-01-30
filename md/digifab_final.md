@@ -16,8 +16,6 @@
 
 This document will explain the creation of my final FabLab course project, a mini PC case featuring an old laptop motherboard with integrated electronics for measuring and displaying system temperature.
 
-![Showcase of the final PC case](../download/pccasedemo.webm)
-
 All designs and components needed will be linked for download in their appropriate sections. For convenience, you can also get the direct references at the bottom of the document.
 
 ## Inspiration
