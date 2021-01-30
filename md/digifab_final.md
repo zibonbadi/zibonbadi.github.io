@@ -106,13 +106,13 @@ Generally I designed three types of 3D printed ABS corner pieces:
 
 All parts were designed by first laying out a somewhat complex sketch which was then extruded multiple times to achieve a consistent 3D model in Fusion 360.
 
-I prepared the corner piece models in Cura using the following settings:
+Just as with the laser cut wood, I am sadly unable to show you any settings as I had to commission the preparation 3D printing outside due to COVID-19.
 
 After assembly I started to notice that the application of outer corners for mounting ended up being quite cumbersome and provided comparatively little structural support. Combined with the necessarily limited length of the screws used (M3x16mm), I decided to favor inner corner pieces over outer ones (although outer corners still needed to be applied for connecting the two main levels of the case).
 
 ## Electronics wiring
 
-The plan for the electronics seemed simple: Tap into the laptop's power socket, adjust the power coming from it and let an old Arduino Uno run the measurement eqipment. However as you will read later, there were a few issues along the way. For now have this table with how everything was wired up logically:
+The plan for the electronics seemed simple: Tap into the laptop's power socket, adjust the power coming from it and let an old Arduino Uno run the measurement eqipment, with a 19V to 5V stepdown transformator to hook into the Arduino's DC. However as you will read later, there were a few issues along the way. For now have this table with how everything was wired up logically:
 
 | Arduino pin | Component pin |
 |---|---|
