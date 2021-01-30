@@ -15,6 +15,7 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -77,6 +78,9 @@
 <h2 id="introduction">Introduction</h2>
 <p>For this week, I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.</p>
 <p>As usual, all software resources (as in the <em>one</em> source file) are available for download <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and a video of the slightly extended version can be found <a href="../html/digifab06.html">in the next week’s project documentation</a>.</p>
+<figure>
+<video src="../download/transmitter.webm" controls=""><a href="../download/transmitter.webm">Video showing the morse code emitter over serial. If your browser does not support video playback, Download it instead.</a></video><figcaption aria-hidden="true">Video showing the morse code emitter over serial. If your browser does not support video playback, Download it instead.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
 <h2 id="setting-up-the-arduino">Setting up the Arduino</h2>
 <p>For this excercise I’ve been supplied with the following hardware:</p>
 <table>
@@ -167,7 +171,7 @@
 <figure>
 <img src="../img/lesson5/morsecode_serial.png" alt="Serial IO for the morse code emitter program" /><figcaption aria-hidden="true">Serial IO for the morse code emitter program</figcaption>
 </figure>
-<p>Below you can find the entire program’s source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Below you can find the entire program’s source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Some constants for defining arbitrary things</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> MESSAGE_LENGTH = <span class="dv">64</span>;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> buttonPin = <span class="dv">2</span>;     <span class="co">// the number of the pushbutton pin</span></span>
@@ -350,8 +354,9 @@
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p><a href="../src/morsecode.c/morsecode.ino">Morse code transmitter source code</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><a href="../src/morsecode.c/morsecode.ino">Morse code transmitter source code</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p><a href="https://github.com/zibonbadi/zibonbadi.github.io/blob/main/src/morsecode.c/morsecode.c.ino">Morse code transmitter source code</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="../download/transmitter.webm">Video of me showcasing the morse code emitter</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://github.com/zibonbadi/zibonbadi.github.io/blob/main/src/morsecode.c/morsecode.c.ino">Morse code transmitter source code</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
