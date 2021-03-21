@@ -135,11 +135,7 @@ pre{
 	list-style-type: none;
 }
 
-
-@media screen {
-	html{
-		background: #2221;
-	}
+@media screen and (any-hover){
 	nav li > ul {
 		transform: scale(0, 0);
 		transform-origin: top left;
@@ -152,6 +148,12 @@ pre{
 		font-size: inherit;
 		transition: 0.25s ease-in all;
 		transition-delay: 0.25s;
+	}
+}
+
+@media screen {
+	html{
+		background: #2221;
 	}
 	nav ul li a::after {
 	    content: attr(href);

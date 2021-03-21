@@ -59,8 +59,8 @@
 
 @media screen {
 	body{
-		background: var(--color-main-bg-print);
-		color: var(--color-main-text-print);
+		background: transparent var(--color-main-bg-screen);
+		color: var(--color-main-text-screen);
 	}
 }
 

@@ -32,7 +32,7 @@ nav {
 		  background: #0007;
 		  padding: 1ex;
 }
-@media(max-width:60rem){
+@media(orientation: portrait){
 		  nav{
 					 width: calc(100vw - 1cm);
 					 height: 20mm;
@@ -46,7 +46,7 @@ nav {
 					 height: calc(100vh - 3cm);
 		  }
 }
-@media(min-width:60rem){
+@media(orientation: landscape){
 		  nav{
 					 float: left;
 					 flex-direction: column;
