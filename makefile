@@ -5,7 +5,7 @@ dir_stylesheet := styles
 stylesheet_articles := notes.css
 stylesheet_reader := reader.css
 stylesheet_misc := core.css
-stylesheets := $(addprefix $(dir_stylesheet)/, $(stylesheet_articles) $(stylesheet_reader) $(stylesheet_misc) )
+stylesheets := $(addprefix $(dir_stylesheet)/, $(stylesheet_articles) $(stylesheet_misc) )
 
 args_pandoc := -s -c ../$(dir_stylesheet)/$(stylesheet_articles) --toc --toc-depth=3 --highlight-style monochrome
 

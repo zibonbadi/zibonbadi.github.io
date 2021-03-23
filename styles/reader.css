@@ -46,10 +46,10 @@ nav {
 					 height: calc(100vh - 3cm);
 		  }
 }
-@media(orientation: landscape){
+@media(orientation: landscape) and (min-width: 40rem){
 		  nav{
 					 float: left;
-					 flex-direction: column;
+					 flex-direction: row;
 					 width: 100%;
 					 height: calc(99vh - 1cm);
 					 margin: 2mm auto;
