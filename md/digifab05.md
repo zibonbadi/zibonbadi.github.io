@@ -1,15 +1,15 @@
 % Microcontroller programming using Arduino
 
 [^dlsrc]: [Morse code transmitter source code](https://github.com/zibonbadi/zibonbadi.github.io/blob/main/src/morsecode.c/morsecode.c.ino)
-[^dlvid]: [Video of me showcasing the morse code emitter](../download/transmitter.webm)
+[^dlvid]: [Video of me showcasing the morse code emitter](download/transmitter.webm)
 
 ## Introduction
 
 For this week, I decided to write a simple morse code emitter, as it is an easy test case for using the I/O pins, LED and serial bus. The intent is to write a message into the Arduino over Serial and to make the LED blink accordingly once the message has been confirmed using the button.
 
-As usual, all software resources (as in the *one* source file) are available for download [^dlsrc] and a video of the slightly extended version can be found [in the next week's project documentation](../html/digifab06.html).
+As usual, all software resources (as in the *one* source file) are available for download [^dlsrc] and a video of the slightly extended version can be found [in the next week's project documentation](html/digifab06.html).
 
-![Video showing the morse code emitter over serial. If your browser does not support video playback, Download it instead.[^dlvid]](../download/transmitter.webm)
+![Video showing the morse code emitter over serial. If your browser does not support video playback, Download it instead.[^dlvid]](download/transmitter.webm)
 
 ## Setting up the Arduino
 
@@ -36,7 +36,7 @@ For this excercise I've been supplied with the following hardware:
 
 For this project I wired up a button to pin D2 and ground to use as a transmisison button (as shown in the image below). While I was at it, I also used the opportunity to test out an older self-built Arduino I had lying around, just to test whether I'd be able to use it after returning the University one. Turns out it works just as a regular Arduino Uno:
 
-![Wiring for the morse code emitter](../img/lesson5/morsecode_wires.jpg)
+![Wiring for the morse code emitter](img/lesson5/morsecode_wires.jpg)
 
 ## Programming
 
@@ -53,7 +53,7 @@ Lastly you might run into issues when accessing Serial on Arch-based distributio
 
 As you will be able to see in the program's source code later on, I decided to add a buffer probing function using the letter '?' for Serial IO:
 
-![Serial IO for the morse code emitter program](../img/lesson5/morsecode_serial.png)
+![Serial IO for the morse code emitter program](img/lesson5/morsecode_serial.png)
 
 Below you can find the entire program's source code written in the Arduino implementation of the C programming language the entire code can be downloaded as well[^dlsrc].
 

@@ -7,7 +7,7 @@ stylesheet_reader := reader.css
 stylesheet_misc := core.css
 stylesheets := $(addprefix $(dir_stylesheet)/, $(stylesheet_articles) $(stylesheet_misc) )
 
-args_pandoc := -s -c ../$(dir_stylesheet)/$(stylesheet_articles) --toc --toc-depth=3 --highlight-style monochrome
+args_pandoc := -s -c $(dir_stylesheet)/$(stylesheet_articles) --self-contained --toc --toc-depth=3 --highlight-style monochrome
 
 .PHONY: all
 
